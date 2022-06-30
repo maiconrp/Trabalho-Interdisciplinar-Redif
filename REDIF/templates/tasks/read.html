@@ -1,0 +1,29 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block 'title' %}Funcionario{%endblock%}
+
+{% block 'head' %}
+
+<link rel="stylesheet" href="{% static 'css/tasks/create.css'%}">
+<link rel="stylesheet" href="{% static 'css/tasks/style.css'%}">
+{%endblock%}
+
+{% block 'content' %}
+
+<section id="principal">
+    <section id="form">
+        <form action="">
+            <h1>Task: {{Task.title}}</h1>
+            <h2>{{Task.deadline}}</h2>
+            <div class="deadline">Done : {{Task.done}}</div>
+            <p>Descrição:</p>
+            <div class="description">{{Task.description}}</div>
+            
+        </form>
+        <a href="/tasks/">voltar</a>
+    </section>
+</section>
+
+    
+{%endblock%}

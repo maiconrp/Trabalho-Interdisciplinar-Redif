@@ -1,0 +1,23 @@
+
+* {
+    outline: none;
+    border: 0;
+    list-style: none;
+}
+
+#form {
+    width: 80%;
+    min-height: 100vh;
+    margin: 1em auto 0 auto;
+    display: flex;
+    justify-content: start;                                                                                                                                                                                                                                                                                                           ;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Ubuntu';
+}
+
+
+h1 {
+    margin-bottom: 1em;
+    font: normal normal 1.5em 'Ubuntu', sans-serif;
+}

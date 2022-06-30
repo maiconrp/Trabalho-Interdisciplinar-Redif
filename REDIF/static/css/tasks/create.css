@@ -1,0 +1,67 @@
+
+#principal {
+    height: 100vh;
+    margin: 2em;
+}
+
+
+input, .btn {
+    font: normal normal 1em 'Ubuntu', sans-serif;
+    padding: 0.5em 0 0.5em 0.5em;
+    background-color: white;
+    border-bottom:1px solid #FF7700;
+    margin-bottom: 1em;
+}
+
+label {
+    justify-self: end;
+}
+
+li {
+    width: 20em;
+}
+
+textarea {
+    position: relative;
+    width: 100%;
+    border: 1px solid #dbdbdb;
+    resize: vertical;
+
+}
+
+input[name='done']{
+    background-color: #696abd;
+    display: inline;
+    width: initial;
+}
+
+label{display: inline;}
+label[for='description']{display: block;}
+button {background-color: #f5b7b7fd;}
+
+
+.btn {
+    padding: 1em;
+    background-color: #f30000;
+    color: white;
+    font-weight: bolder;
+}
+
+li#submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type='submit']{
+    width: 100%;
+    display: initial;
+    border: none;
+    outline: none;
+    padding: 1em;
+    background-color: #69bd7e;
+    color: white;
+    font-weight: bolder;
+}
+
+
