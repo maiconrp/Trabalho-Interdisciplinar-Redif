@@ -52,6 +52,9 @@ section#login {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1em;
+    border: 1px solid #dbdbdb;
+    height: fit-content;
 }
 
 h1 {
