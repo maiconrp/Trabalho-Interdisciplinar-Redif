@@ -1,10 +1,8 @@
 
-
-
 {% extends '-index.html' %}
 {% load static %}
 
-{% block 'title' %}Redacoes{%endblock%}
+{% block title %}Redacoes{%endblock%}
 
 {%load static%}
 {% block content %}
@@ -26,17 +24,17 @@
                                 <div class="col-sm-6">
                                     <a href="/redif/deletar/{{ r.id }}">
                                         <button type="button" class="btn mb-1 btn-danger">
-                                            <i class="icofont-bin"></i><span class="btn-icon-right"> Apagar </span>
+                                            <i class="icofont-bin"></i><span class="btn-icon-right"></span>
                                         </button>
                                     </a>
                                     <a href="/redif/editar/{{ r.id }}">
                                         <button type="button" class="btn mb-1 btn-primary">
-                                            <span class="btn-icon-right"> <i class="icofont-edit"></i> Editar</span>
+                                            <span class="btn-icon-right"> <i class="icofont-edit"></i></span>
                                         </button>
                                     </a>
                                     <a href="/redif/detalhar/{{ r.id }}">
                                         <button type="button" class="btn mb-1 btn-primary">
-                                            <span class="btn-icon-right"> <i class="icofont-external-link"></i></i> Ler</span>
+                                            <span class="btn-icon-right"> <i class="icofont-external-link"></i></i></span>
                                         </button>
                                     </a>
                                 </div>

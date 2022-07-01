@@ -10,7 +10,7 @@
     margin: 0;
     font-family: 'Ubuntu', sans-serif;
     box-sizing: border-box;
-}
+} 
 
 a {
     color: var(--main-color);
@@ -21,30 +21,21 @@ a {
     --sec-color : #000000;
 }
 
-body, main {
-    width: 100%;
-    height: 100vh;
-}
 
-.wrapper {
+/* .wrapper {
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-content: center;
-}
+} */
 
-section.login {
+section#xctn-2 {
     background-color: #FFF;
     color: #000000;
     display: flex;
     align-items: center;
     flex-direction: column;
-}
-
-section.content, .container {
-    height: 100vh;
-    width: 100%;
 }
 
 h1 {
@@ -53,7 +44,7 @@ h1 {
 }
 
 /* Formulário */
-form, .container2 {
+#xctn-1 form{
     display: flex;
     width: 100%;
     display: flex;
@@ -67,13 +58,13 @@ form, .container2 {
     margin-bottom: 0.5emem;
 } */
 
-input {
+#xctn-1 input {
     padding: 0;
     margin: 0;
     border: none;
 }
 
-li {
+#xctn-1 li {
     width: 100%;
     border-radius: 5px;
     position: relative;
@@ -84,7 +75,7 @@ li {
     flex-direction: column;
 }
 
-ul { 
+#xctn-1 ul { 
     width: 100%;
     margin-bottom: 1em;
 }
@@ -96,36 +87,38 @@ main {
 }
 
 
-form input, textarea {
-    background-color: #00000000;
+#xctn-1 form input, textarea {
+    outline: 1px solid #dbdbdb;
     width: 100%;
     padding: 1em;
-    background-color: #d3cece42;
+    transition: 0.3s;
 }
 
-textarea {
+#xctn-1 textarea {
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    font-size: 12pt;
+   
 }
 
-form li {
-    margin-bottom: 2.2em;
+#xctn-1 form li {
+    margin-bottom: 0.5em;
 }
 
-form label {
+#xctn-1 form label {
     margin-bottom: 0.2em;
 }
 
-form input:focus, textarea:focus {
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+#xctn-1 input:not([type='submit']):focus, textarea:focus {
+    outline: 1px solid var(--main-color);
+    transform: scale(1.02);
 }
 
-
-form textarea {
+#xctn-1 form textarea {
     height: 50em;
 }
 
 
-form input[type='submit']{
+#xctn-1 form input[type='submit']{
     background-color: var(--main-color);
     color: #FFF;
     padding: 1em;
@@ -133,49 +126,50 @@ form input[type='submit']{
     border-radius: 5px;
 }
 
-.login aside, .container1 aside{
+#xctn-2 aside{
     padding: 2em;
 }
 
-#more > p {
+#xctn-1 #more > p {
     text-align: center;
 }
 
+
 /* Para computados */
 @media only screen and (min-width: 400px) {
-    section.content, .container{
+    section#xctn-1{
         display: flex;
         justify-content: center;
-        padding-top: 1em;
-        width: 100%;
+        height: fit-content;
+        width: 75%;
+        box-shadow: rgb(0 0 0 / 16%) 0px 4px 6px;
     }
 
-    section.login, .container2{
-        width: 80%;
+    section#xctn-2{
+        width: 92%;
         border-radius: 10px;
-        max-width: 900px;
+        max-width: 800px;
         height: fit-content;
         box-shadow: none;
     }
-
 }
 
 /* Para mobile */
 @media only screen and (max-width:400px) {
 
-    section.login, .container1 {
+    section#xctn-2{
         width: 100%;
-        height: 100vh;  
+        height: auto;  
     }
 
     form, .container2{
-        width: 90%;
+        width: 100%;
     }
 }
 
 @media only screen and (min-height:800px) {
 
-    section.login, .container1 {
+    section#xctn-2{
         justify-content: center; 
     }
 }
