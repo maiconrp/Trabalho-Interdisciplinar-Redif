@@ -1,46 +1,67 @@
 
 
 
-{% extends 'base2.html' %}
+{% extends '-index.html' %}
 {% load static %}
 
-{% block 'title' %}Tasks{%endblock%}
+{% block 'title' %}Redacoes{%endblock%}
 
-{% block 'head' %}
-    <link rel="stylesheet" href="{% static 'css/tasks/style.css'%}">
-    <link rel="stylesheet" href="{% static 'css/tasks/read.css'%}">
-    <link rel="stylesheet" href="{% static 'css/tasks/manage.css'%}">
-{%endblock%}
-
-{% block 'content' %}
-    <section id="principal">
-    <section id="form">
-        <h1>Tasks list</h1>
-        <table>
-            
-            <tr>
-                <td class="Title">Title</td>
-                <td class="Deadline">Deadline</td>
-                <td class="Done">Done</td>
-                <td class="action">Action</td>
-                <a href="/redif/create/">Create Tasks</a>
-            </tr>
-            {% for Redacao in Redacoes %}
-                <tr>
-                    <td class="Title">{{Redacao.title}}</td>
-                    <td class="Deadline">{{Redacao.dateCreation}}</td>
-                    <td class="Done">{{Task.area}}</td>
-                    <td class="action">
-                        <a href="/redif/view/{{Redacao.id}}/" class="edit"><img src="{% static 'img/tasks/gerenciar/view.png'%}" alt=""></a>
-                        <a href="/redif/delete/{{Redacao.id}}/" class="del"><img src="{% static 'img/tasks/gerenciar/trash.png'%}" alt=""></a>
-                        <a href="/redif/edit/{{Redacao.id}}/" class="edit"><img src="{% static 'img/tasks/gerenciar/pencil.png'%}" alt=""></a>
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
+{%load static%}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Suas redações: </h1>
         
-    </section>
-    
-</section>
-    
-{%endblock%}
+                {% if redacao %}
+                {% for r in Redacoes %}
+                olaaaa
+                <div class="feature-item mb-5 mb-lg-0">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="feature-icon mb-4"><i class="icofont-file-text"></i>
+                            <a href="/Redif/{{ r.id }}/"><h4 class="mb-3">"{{r.topic}}"</h4></a></div>
+                        
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <a href="/redif/view/{{r.id}}">
+                                        <button type="button" class="btn mb-1 btn-danger">
+                                            <i class="icofont-bin"></i><span class="btn-icon-right">  </span>
+                                        </button>
+                                    </a>
+                                    <a href="/redif/edit/{{ r.id }}">
+                                        <button type="button" class="btn mb-1 btn-primary">
+                                            <span class="btn-icon-right"> <i class="icofont-edit"></i> </span>
+                                        </button>
+                                    </a>
+                                    <a href="/redif/delete/{{ r.id }}">
+                                        <button type="button" class="btn mb-1 btn-primary">
+                                            <span class="btn-icon-right"> <i class="icofont-external-link"></i></i> </span>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </div>
+                <br>
+                {% endfor %}
+        
+                {% else %}
+                <p>Não há redações, clique em compartilhar redações para adicioná-las</p>
+                {% endif %}
+                <div class="text-right mr-3">
+                    <a href="/redif/create/">
+                        <button type="button" class="btn mb-1 btn-primary">
+                            Compartilhar redação <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
