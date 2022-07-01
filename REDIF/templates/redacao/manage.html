@@ -14,30 +14,29 @@
             <div class="card-body">
                 <h4 class="card-title">Suas redações: </h1>
         
-                {% if redacao %}
+                {% if Redacoes %}
                 {% for r in Redacoes %}
-                olaaaa
                 <div class="feature-item mb-5 mb-lg-0">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="feature-icon mb-4"><i class="icofont-file-text"></i>
-                            <a href="/Redif/{{ r.id }}/"><h4 class="mb-3">"{{r.topic}}"</h4></a></div>
+                            <a href="/Redif/{{ r.id }}/"><h4 class="mb-3">"{{r.title}}"</h4></a></div>
                         
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <a href="/redif/view/{{r.id}}">
+                                    <a href="/redif/delete/{{ r.id }}">
                                         <button type="button" class="btn mb-1 btn-danger">
-                                            <i class="icofont-bin"></i><span class="btn-icon-right">  </span>
+                                            <i class="icofont-bin"></i><span class="btn-icon-right"> x </span>
                                         </button>
                                     </a>
                                     <a href="/redif/edit/{{ r.id }}">
                                         <button type="button" class="btn mb-1 btn-primary">
-                                            <span class="btn-icon-right"> <i class="icofont-edit"></i> </span>
+                                            <span class="btn-icon-right"> <i class="icofont-edit"></i> y</span>
                                         </button>
                                     </a>
-                                    <a href="/redif/delete/{{ r.id }}">
+                                    <a href="/redif/view/{{ r.id }}">
                                         <button type="button" class="btn mb-1 btn-primary">
-                                            <span class="btn-icon-right"> <i class="icofont-external-link"></i></i> </span>
+                                            <span class="btn-icon-right"> <i class="icofont-external-link"></i></i> z</span>
                                         </button>
                                     </a>
                                 </div>

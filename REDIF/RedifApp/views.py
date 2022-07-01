@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
 from django.contrib.auth.models import User
+from requests import request
 from RedifApp.forms import RedacaoForm
 from RedifApp.models import Redacao
 
@@ -60,10 +61,29 @@ def view(request, id):
         }
     return render(request, 'redacao/read.html', data)
 
+
 def edit(request, id):
-    pass
+
+    redacao = Redacao.objects.get(pk=id)
+
+    if request.method == 'POST':
+        form = RedacaoForm(request.POST, instance=redacao)
+        if form.is_valid():
+            form.save()
+            return redirect("/tasks")
+
+    
+    form = RedacaoForm(instance=redacao)
+    context = {
+        'form' : form,
+        'id' : id
+    }
+    return render(request, 'redacao/edit.html', context=context)
+
 
 
 @login_required
 def delete(request, id):
-    pass
+    Redacao.objects.get(pk=id).delete()
+    return redirect('/redif/listar')
+
