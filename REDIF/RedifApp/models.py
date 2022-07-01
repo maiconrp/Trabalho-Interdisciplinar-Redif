@@ -37,6 +37,7 @@ class Redacao(models.Model):
         max_length=700,
         blank = False,
         null = False,
+        
     )
 
     comment = models.CharField(

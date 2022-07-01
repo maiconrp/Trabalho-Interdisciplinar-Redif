@@ -22,7 +22,8 @@
 
 	<!-- Main Stylesheet -->
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
-
+	{%block head%}
+	{% endblock %}
 </head>
 
 <body id="top">
@@ -39,8 +40,6 @@
 
 
 	<!-- footer Start -->
-	{% include '-footer.html' %}
-
 
 
 
