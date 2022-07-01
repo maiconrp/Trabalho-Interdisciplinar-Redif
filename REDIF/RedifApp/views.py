@@ -60,3 +60,10 @@ def view(request, id):
         }
     return render(request, 'redacao/read.html', data)
 
+def edit(request, id):
+    pass
+
+
+@login_required
+def delete(request, id):
+    pass
