@@ -70,7 +70,7 @@ def edit(request, id):
         form = RedacaoForm(request.POST, instance=redacao)
         if form.is_valid():
             form.save()
-            return redirect("/tasks")
+            return redirect('/redif/listar')
 
     
     form = RedacaoForm(instance=redacao)

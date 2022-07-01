@@ -7,3 +7,4 @@ class RedacaoForm(forms.ModelForm):
     class Meta:
         model = Redacao
         fields = ['title', 'area', 'topic', 'content', 'comment', ]
+        
