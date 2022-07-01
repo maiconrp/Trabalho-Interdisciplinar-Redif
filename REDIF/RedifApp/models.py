@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Redacao(models.Model):
-    title = models.CharField(
+    titulo = models.CharField(
         max_length = 45, 
         blank = False,
         null = False,
@@ -20,27 +20,27 @@ class Redacao(models.Model):
         max_length=45,
     )
 
-    topic = models.CharField(
+    tema = models.CharField(
         blank=False, 
         null = False,
         max_length=45,
         default= 'topic'
     )
 
-    dateCreation = models.DateTimeField(
+    data_criacao = models.DateTimeField(
         blank=False, 
         null = False,
         default= date.today,
     )
 
-    content = models.TextField(
+    conteudo = models.TextField(
         max_length=700,
         blank = False,
         null = False,
         
     )
 
-    comment = models.CharField(
+    comentario = models.CharField(
         max_length=45, 
         blank= True,
         null= True,

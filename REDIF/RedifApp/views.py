@@ -3,87 +3,93 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
 from django.contrib.auth.models import User
+from matplotlib.style import context
 from requests import request
 from RedifApp.forms import RedacaoForm
 from RedifApp.models import Redacao
 
 from datetime import datetime
 
-def listRedactions(request):
-    redactions = Redacao.objects.all()
+def listarRedacao(request):
+    Redacoes = Redacao.objects.all()
+    context = {"Redacao": Redacoes}
 
-    context = {
-        "Redacoes": redactions,
-    }
-
-    return render(request,'redacao/manage.html', context)
+    return render(request,'redacao/listar.html', context)
 
 @login_required
-def create(request):
+def criarRedacao(request):
+
     if request.method == 'GET':
         form = RedacaoForm()
         context = {
         'form' : form
         }
-        return render(request, 'redacao/create.html', context=context)
+        return render(request, 'redacao/criar.html', context=context)
     
     form = RedacaoForm(request.POST)
     user = request.user.id
-    user = User.objects.get(pk=user)
-    print(type(user))
+
     if form.is_valid():
-        title = form.cleaned_data['title']
+        titulo = form.cleaned_data['titulo']
         area = form.cleaned_data['area']
-        topic = form.cleaned_data['topic']
-        content = form.cleaned_data['content']
-        comment = form.cleaned_data['comment']
-        dateCreation = datetime.now()
-        fk_autor = user
-        new_redacao = Redacao(title=title, area=area, topic=topic, content=content, comment=comment, dateCreation=dateCreation, fk_autor=fk_autor)
-        new_redacao.save()
+        tema = form.cleaned_data['tema']
+        conteudo = form.cleaned_data['conteudo']
+        comentario = form.cleaned_data['comentario']
+        data_criacao = datetime.now()
+        fk_autor = User.objects.get(pk=user)
+
+        nova_redacao = Redacao(
+            titulo= titulo, 
+            area= area, 
+            tema= tema, 
+            conteudo= conteudo, 
+            comentario= comentario, 
+            data_criacao= data_criacao, 
+            fk_autor= fk_autor,
+        )
+        nova_redacao.save()
         
     
     context = {
         'form' : form
     }
 
-    return render(request, 'redacao/read.html', context=context)
+    return render(request, 'redacao/detalhar.html', context=context)
 
 
-def view(request, id):
-    data = {}
+def detalharRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
-    print(redacao)
     autor = redacao.fk_autor.username
-    data = {
+    context = {
         'Redacao' : redacao,
         'autor' : autor
-        }
-    return render(request, 'redacao/read.html', data)
+    }
+
+    return render(request, 'redacao/detalhar.html', context)
 
 
-def edit(request, id):
-
+def editarRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
 
     if request.method == 'POST':
         form = RedacaoForm(request.POST, instance=redacao)
+
         if form.is_valid():
             form.save()
             return redirect('/redif/listar')
-
     
     form = RedacaoForm(instance=redacao)
     context = {
         'form' : form,
-        'id' : id
+        'id' : id,
     }
-    return render(request, 'redacao/edit.html', context=context)
+
+    return render(request, 'redacao/editar.html', context=context)
 
 
 
 @login_required
-def delete(request, id):
+def deletarRedacao(request, id):
     Redacao.objects.get(pk=id).delete()
     return redirect('/redif/listar')
 

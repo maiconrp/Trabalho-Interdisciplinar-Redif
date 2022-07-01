@@ -14,27 +14,27 @@
             <div class="card-body">
                 <h4 class="card-title">Suas redações: </h1>
         
-                {% if Redacoes %}
-                {% for r in Redacoes %}
+                {% if Redacao %}
+                {% for r in Redacao %}
                 <div class="feature-item mb-5 mb-lg-0">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="feature-icon mb-4"><i class="icofont-file-text"></i>
-                            <a href="/Redif/{{ r.id }}/"><h4 class="mb-3">"{{r.title}}"</h4></a></div>
+                            <a href="/Redif/{{ r.id }}/"><h4 class="mb-3">"{{r.titulo}}"</h4></a></div>
                         
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <a href="/redif/delete/{{ r.id }}">
+                                    <a href="/redif/deletar/{{ r.id }}">
                                         <button type="button" class="btn mb-1 btn-danger">
                                             <i class="icofont-bin"></i><span class="btn-icon-right"> Apagar </span>
                                         </button>
                                     </a>
-                                    <a href="/redif/edit/{{ r.id }}">
+                                    <a href="/redif/editar/{{ r.id }}">
                                         <button type="button" class="btn mb-1 btn-primary">
                                             <span class="btn-icon-right"> <i class="icofont-edit"></i> Editar</span>
                                         </button>
                                     </a>
-                                    <a href="/redif/view/{{ r.id }}">
+                                    <a href="/redif/detalhar/{{ r.id }}">
                                         <button type="button" class="btn mb-1 btn-primary">
                                             <span class="btn-icon-right"> <i class="icofont-external-link"></i></i> Ler</span>
                                         </button>
@@ -51,7 +51,7 @@
                 <p>Não há redações, clique em compartilhar redações para adicioná-las</p>
                 {% endif %}
                 <div class="text-right mr-3">
-                    <a href="/redif/create/">
+                    <a href="/redif/criar/">
                         <button type="button" class="btn mb-1 btn-primary">
                             Compartilhar redação <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
                         </button>

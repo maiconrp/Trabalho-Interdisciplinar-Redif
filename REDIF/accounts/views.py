@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from accounts.forms import RegisterUserForm
 
 # Create your views here.
-def RegisterUser(request):
+def registrarUsuario(request):
     if request.method == "POST":
         form = RegisterUserForm(request.POST)
         if form.is_valid():
@@ -15,4 +15,4 @@ def RegisterUser(request):
         'form' : form
     }    
 
-    return render(request, 'registration/register.html',context=context)
+    return render(request, 'registration/registrar.html',context=context)
