@@ -14,14 +14,17 @@
 <section id="principal">
     <section id="form">
         <form action="">
-            <h1>Task: {{Task.title}}</h1>
-            <h2>{{Task.deadline}}</h2>
-            <div class="deadline">Done : {{Task.done}}</div>
-            <p>Descrição:</p>
-            <div class="description">{{Task.description}}</div>
+            <h1>Title: {{Redacao.title}}</h1>
+            <h2>{{autor}}</h2>
+            <div class="dateCreation">date : {{Redacao.dateCreation}}</div>
+            <div class="area">area : {{Redacao.area}}</div>
+            <div class="area">topic : {{Redacao.topic}}</div>
+            <p>Redação:</p>
+            <div class="description">{{Redacao.content}}</div>
+            <div class="comment">{{Redacao.comment}}</div>
             
         </form>
-        <a href="/tasks/">voltar</a>
+        <a href="/redif/listar/">voltar</a>
     </section>
 </section>
 
