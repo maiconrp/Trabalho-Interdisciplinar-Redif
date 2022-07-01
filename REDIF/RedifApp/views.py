@@ -35,8 +35,8 @@ def create(request):
         title = form.cleaned_data['title']
         area = form.cleaned_data['area']
         topic = form.cleaned_data['topic']
-        content = form.cleaned_data['title']
-        comment = form.cleaned_data['title']
+        content = form.cleaned_data['content']
+        comment = form.cleaned_data['comment']
         dateCreation = datetime.now()
         fk_autor = user
         new_redacao = Redacao(title=title, area=area, topic=topic, content=content, comment=comment, dateCreation=dateCreation, fk_autor=fk_autor)
