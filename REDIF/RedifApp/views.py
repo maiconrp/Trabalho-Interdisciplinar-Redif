@@ -70,6 +70,9 @@ def detalharRedacao(request, id):
 @login_required
 def editarRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
+
+    if redacao.fk_autor.id == request.user.id: 
+        return redirect('/redif/listar')
     
     if request.method == "POST":
         form = RedacaoForm(request.POST, instance=redacao)
@@ -90,6 +93,11 @@ def editarRedacao(request, id):
 
 @login_required
 def deletarRedacao(request, id):
-    Redacao.objects.get(pk=id).delete()
+    redacao = Redacao.objects.get(pk=id)
+
+    if not redacao.fk_autor.id == request.user.id: 
+        return redirect('/redif/listar')
+
+    redacao.delete()
     return redirect('/redif/listar')
 
