@@ -63,13 +63,14 @@ def DetalharRedacao(request, id):
 @login_required
 def EditarRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
+    
     if request.method == "POST":
         form = RedacaoForm(request.POST, instance=redacao)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect("/redif/")
     else:
-        form = RedacaoForm()
+        form = RedacaoForm(instance=redacao)
 
     context = {
         "form" : form,
