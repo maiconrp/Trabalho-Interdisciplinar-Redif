@@ -67,7 +67,7 @@ def detalharRedacao(request, id):
 
     return render(request, 'redacao/detalhar.html', context)
 
-
+@login_required
 def editarRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
 
