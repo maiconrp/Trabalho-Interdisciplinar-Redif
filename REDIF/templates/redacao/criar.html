@@ -1,0 +1,31 @@
+{% extends '-index.html' %}
+{% load static %}
+
+{% block title %}<title>Compartilhar redacão</title> {%endblock%}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/redacoes/style.css'%}">
+{%endblock%}
+
+
+{%load static%}
+
+{% block content %}
+<main>
+    <section  id="xctn-1">
+        <section id="xctn-2">
+            <h1>Compartilhar Redacao</h1>
+            <form action="." method="post" id="xctn-2">
+                {% csrf_token %}
+                {{ form.as_ul }}
+                <input type="submit" value="Compartilhar">
+            </form>
+            <aside>
+                <div id="more">
+                    <a href="/redif/listar/"><button class="btn">Cancelar</button></a>
+                </div>
+            </aside>
+        </section>
+    </section>
+</main>
+{% endblock %}
+

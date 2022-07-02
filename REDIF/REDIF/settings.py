@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'RedifApp.apps.RedifappConfig',
+    'accounts.apps.AccountsConfig',
     'bootstrapform'
 ]
 
@@ -124,5 +125,5 @@ STATICFILES_DIRS = [ str(BASE_DIR) + "/static"]
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-LOGIN_REDIRECT_URL = '/Redif'
-LOGOUT_REDIRECT_URL = '/acounts/login'
+LOGIN_REDIRECT_URL = '/redif/listar/'
+LOGOUT_REDIRECT_URL = '/accounts/login'
