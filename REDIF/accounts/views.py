@@ -7,7 +7,7 @@ def registrarUsuario(request):
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            return redirect('/tasks')
+            return redirect('/redif/listar/')
     else:
         form = RegisterUserForm()
 
