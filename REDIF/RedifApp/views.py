@@ -95,9 +95,8 @@ def editarRedacao(request, id):
 def deletarRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
 
-    if not redacao.fk_autor.id == request.user.id: 
-        return redirect('/redif/listar')
+    if redacao.fk_autor.id == request.user.id: 
+        redacao.delete()
 
-    redacao.delete()
     return redirect('/redif/listar')
 
