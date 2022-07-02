@@ -1,34 +1,25 @@
-
-{% extends 'base.html' %}
-{% load static %}
-
-{% block head %}
-<link rel="stylesheet" href="{% static 'css/accounts/registration.css' %}">
-
-{% endblock %}
-
-
-
+{% extends '-index.html' %}
+{%load bootstrap%}
+{%load static%}
 {% block content %}
-    <div class="wrapper">
-        <main>
-            <section id="content">
-                <section id="login">
-                    <h1>Sing In</h1>
-                    <form action="." method="post">
+<div class="content">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{% url 'login' %}" method="post">
                         {% csrf_token %}
-                        <ul>
-                            {{form.as_ul}}
-                        </ul>
-                        <input type="submit" value="Log in">
+                        <h1 class="card-title">Faça login para acessar o sistema</h1>
+
+                        {{ form|bootstrap }}
+                        <input class="btn btn-primary" type="submit" value="login" />
+                        <input type="hidden" name="next" value="{{ next }}" />
+
+
                     </form>
-                    <aside>
-                        <div id="more">
-                            <p>Don't have a account? <a href="/accounts/register/">Sing Up</a></p>
-                        </div>
-                    </aside>
-                </section>
-            </section>
-        </main>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 {% endblock %}

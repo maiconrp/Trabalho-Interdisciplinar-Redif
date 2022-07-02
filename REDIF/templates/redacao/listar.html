@@ -1,0 +1,61 @@
+{% extends '-index.html' %}
+
+{%load bootstrap%}
+{%load static%}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Suas redações: </h1>
+        
+                {% if Redacao %}
+                {% for r in Redacao %}
+                <div class="feature-item mb-5 mb-lg-0">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="feature-icon mb-4"><i class="icofont-file-text"></i>
+                            <a href="/redif/{{ r.id }}/"><h4 class="mb-3">"{{r.tema}}"</h4></a></div>
+                        
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <a href="deletar/{{r.id}}">
+                                        <button type="button" class="btn mb-1 btn-danger">
+                                            <i class="icofont-bin"></i><span class="btn-icon-right">  </span>
+                                        </button>
+                                    </a>
+                                    <a href="editar/{{ r.id }}">
+                                        <button type="button" class="btn mb-1 btn-primary">
+                                            <span class="btn-icon-right"> <i class="icofont-edit"></i> </span>
+                                        </button>
+                                    </a>
+                                    <a href="{{ r.id }}">
+                                        <button type="button" class="btn mb-1 btn-primary">
+                                            <span class="btn-icon-right"> <i class="icofont-external-link"></i></i> </span>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </div>
+                <br>
+                {% endfor %}
+        
+                {% else %}
+                <p>Não há redações, clique em compartilhar redações para adicioná-las</p>
+                {% endif %}
+                <div class="text-right mr-3">
+                    <a href="">
+                        <button type="button" class="btn mb-1 btn-primary">
+                            Compartilhar redação <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

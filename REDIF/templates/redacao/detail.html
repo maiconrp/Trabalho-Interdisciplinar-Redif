@@ -1,0 +1,28 @@
+{% extends '-index.html' %}
+{% load bootstrap%}
+{% load static %}
+
+{% block content %}
+
+<div class="feature-item mb-5 mb-lg-0">
+    <div class="feature-icon mb-4">
+        <i class="icofont-icofont-file-text"></i>
+    </div>
+    <div>
+
+    <a href="/redif/{{ r.id }}/"><h4 class="mb-3">"{{.titulo}}"</h4></a>
+    <span>Autor: {{ r.tema }}</span>
+    <p class="mb-4">{{r.texto}</p>
+    <div class="row">
+        <div class="col-sm-6">
+            <a href="/delete/{{r.id}}">
+                <button type="button" class="btn mb-1 btn-danger">
+                    voltar <span class="btn-icon-right"> <i class="fa fa-close"></i> </span>
+                </button>
+            </a>
+        
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
