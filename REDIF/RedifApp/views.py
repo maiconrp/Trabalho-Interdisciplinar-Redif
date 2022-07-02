@@ -14,8 +14,8 @@ def listarRedacao(request):
     Redacoes = Redacao.objects.all()
     context = {
         "Redacao": Redacoes,
-        'Logado': None,
-        'Usuario' : None
+        'Logado': False,
+        'Usuario' : False,
     }
 
     if User.is_authenticated:
@@ -23,9 +23,9 @@ def listarRedacao(request):
             context['Usuario'] = request.user.id
             context['Logado'] = True
         except: pass
-        print(context['Usuario'], context['Redacao'][1].fk_autor.id)
 
     return render(request,'redacao/listar.html', context)
+
 
 @login_required
 def criarRedacao(request):
@@ -41,24 +41,13 @@ def criarRedacao(request):
     user = request.user.id
 
     if form.is_valid():
-        titulo = form.cleaned_data['titulo']
-        area = form.cleaned_data['area']
-        tema = form.cleaned_data['tema']
-        conteudo = form.cleaned_data['conteudo']
-        comentario = form.cleaned_data['comentario']
-        data_criacao = datetime.now()
-        fk_autor = User.objects.get(pk=user)
+        nova_redacao = form.save(commit=False)
 
-        nova_redacao = Redacao(
-            titulo= titulo, 
-            area= area, 
-            tema= tema, 
-            conteudo= conteudo, 
-            comentario= comentario, 
-            data_criacao= data_criacao, 
-            fk_autor= fk_autor,
-        )
+        nova_redacao.data_criacao = datetime.now()
+        nova_redacao.fk_autor = User.objects.get(pk=user)
+
         nova_redacao.save()
+        return redirect("/redif/listar")
         
     
     context = {
@@ -81,21 +70,21 @@ def detalharRedacao(request, id):
 @login_required
 def editarRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
-
-    if request.method == 'POST':
+    
+    if request.method == "POST":
         form = RedacaoForm(request.POST, instance=redacao)
-
         if form.is_valid():
             form.save()
-            return redirect('/redif/listar')
-    
-    form = RedacaoForm(instance=redacao)
+            return redirect("/redif/listar/")
+    else:
+        form = RedacaoForm(instance=redacao)
+
     context = {
-        'form' : form,
-        'id' : id,
+        "form" : form,
+        "id"   : id,
     }
 
-    return render(request, 'redacao/editar.html', context=context)
+    return render(request, "redacao/editar.html", context)
 
 
 
