@@ -18,10 +18,11 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="feature-icon mb-4"><i class="icofont-file-text"></i>
-                            <a href="/Redif/{{ r.id }}/"><h4 class="mb-3">"{{r.titulo}}"</h4></a></div>
+                            <a href="/redif/detalhar/{{ r.id }}"><h4 class="mb-3">"{{r.titulo}}"</h4></a></div>
                         
                             <div class="row">
                                 <div class="col-sm-6">
+                                    {% if Logado and Redacao.fk_autor is Autor%}
                                     <a href="/redif/deletar/{{ r.id }}">
                                         <button type="button" class="btn mb-1 btn-danger">
                                             <i class="icofont-bin"></i><span class="btn-icon-right"></span>
@@ -32,6 +33,7 @@
                                             <span class="btn-icon-right"> <i class="icofont-edit"></i></span>
                                         </button>
                                     </a>
+                                    {% endif %}
                                     <a href="/redif/detalhar/{{ r.id }}">
                                         <button type="button" class="btn mb-1 btn-primary">
                                             <span class="btn-icon-right"> <i class="icofont-external-link"></i></i></span>

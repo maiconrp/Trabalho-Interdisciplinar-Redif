@@ -12,7 +12,18 @@ from datetime import datetime
 
 def listarRedacao(request):
     Redacoes = Redacao.objects.all()
-    context = {"Redacao": Redacoes}
+    context = {
+        "Redacao": Redacoes,
+        'Logado': None,
+        'Usuario' : None
+    }
+
+    if User.is_authenticated:
+        try:
+            Usuario = request.user.id
+            context['Usuario'] = User.objects.get(pk=Usuario)
+            context['Logado'] = True
+        except: pass
 
     return render(request,'redacao/listar.html', context)
 
