@@ -11,7 +11,6 @@ class Redacao(models.Model):
         max_length = 45, 
         blank = False,
         null = False,
-        default = 'Title',
     )
 
     area = models.CharField(
@@ -24,7 +23,6 @@ class Redacao(models.Model):
         blank=False, 
         null = False,
         max_length=45,
-        default= 'topic'
     )
 
     data_criacao = models.DateTimeField(
@@ -40,7 +38,7 @@ class Redacao(models.Model):
     )
 
     comentario = models.CharField(
-        max_length=45, 
+        max_length=300, 
         blank= True,
         null= True,
         default=None
