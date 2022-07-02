@@ -37,7 +37,7 @@ class Redacao(models.Model):
         max_length= 15000
     )
 
-    comentario = models.CharField(
+    comentario = models.TextField(
         max_length=300, 
         blank= True,
         null= True,

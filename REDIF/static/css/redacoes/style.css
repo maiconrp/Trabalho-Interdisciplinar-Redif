@@ -110,17 +110,22 @@ main {
 
 #xctn-1 input:not([type='submit']):focus, textarea:focus {
     outline: 1px solid var(--main-color);
-    transform: scale(1.02);
+    transform: scale(1.04);
 }
 
-#xctn-1 form textarea {
-    height: 50em;
+#id_comentario {
+    height: 6em;
+}
+
+#xctn-1 #id_conteudo {
+    height: 30em;
 }
 
 
 #xctn-1 form input[type='submit']{
     background-color: var(--main-color);
     color: #FFF;
+    margin-top: 3em;
     padding: 1em;
     width: 100%;
     border-radius: 5px;
