@@ -20,10 +20,10 @@ def listarRedacao(request):
 
     if User.is_authenticated:
         try:
-            Usuario = request.user.id
-            context['Usuario'] = User.objects.get(pk=Usuario)
+            context['Usuario'] = request.user.id
             context['Logado'] = True
         except: pass
+        print(context['Usuario'], context['Redacao'][1].fk_autor.id)
 
     return render(request,'redacao/listar.html', context)
 

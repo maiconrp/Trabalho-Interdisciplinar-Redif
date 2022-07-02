@@ -22,7 +22,7 @@
                         
                             <div class="row">
                                 <div class="col-sm-6">
-                                    {% if Logado and Redacao.fk_autor is Autor%}
+                                    {% if Logado and r.fk_autor.id == Usuario%}
                                     <a href="/redif/deletar/{{ r.id }}">
                                         <button type="button" class="btn mb-1 btn-danger">
                                             <i class="icofont-bin"></i><span class="btn-icon-right"></span>
