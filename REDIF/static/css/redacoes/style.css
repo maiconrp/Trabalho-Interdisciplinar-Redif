@@ -146,7 +146,7 @@ main {
         display: flex;
         justify-content: center;
         height: fit-content;
-        width: 75%;
+        width: 100%;
         box-shadow: rgb(0 0 0 / 16%) 0px 4px 6px;
     }
 
