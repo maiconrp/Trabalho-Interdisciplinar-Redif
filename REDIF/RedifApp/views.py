@@ -10,7 +10,7 @@ from datetime import datetime
 def home(request):
     return render(request, "home.html")
 
-def ListarRedacao(request):
+def listarRedacao(request):
     Redacoes = Redacao.objects.all()
 
     context = {
@@ -25,10 +25,10 @@ def ListarRedacao(request):
 
         except: pass
 
-    return render(request,"Redacao/listar.html", context)
+    return render(request,"redacao/listar.html", context)
 
 @login_required
-def CriarRedacao(request):
+def criarRedacao(request):
     user = request.user.id
     form = RedacaoForm(request.POST)
 
@@ -48,9 +48,9 @@ def CriarRedacao(request):
         "form": form
     }
 
-    return render(request, "Redacao/criar.html", context)
+    return render(request, "redacao/criar.html", context)
 
-def DetalharRedacao(request, id):
+def detalharRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
     autor = redacao.fk_autor.username
 
@@ -58,10 +58,10 @@ def DetalharRedacao(request, id):
         "Redacao" : redacao,
         "autor"   : autor
     }
-    return render(request, "Redacao/detalhar.html", context)
+    return render(request, "redacao/detalhar.html", context)
 
 @login_required
-def EditarRedacao(request, id):
+def editarRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
     
     if request.method == "POST":
@@ -77,9 +77,9 @@ def EditarRedacao(request, id):
         "id"   : id,
     }
 
-    return render(request, "Redacao/editar.html", context)
+    return render(request, "redacao/editar.html", context)
 
 @login_required
-def DeletarRedacao(request, id):
+def deletarRedacao(request, id):
     Redacao.objects.get(pk=id).delete()
     return HttpResponseRedirect("/redif")
