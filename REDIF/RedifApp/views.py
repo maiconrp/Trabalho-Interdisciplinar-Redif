@@ -36,7 +36,6 @@ def listarRedacao(request):
         'Redacao': Redacoes,
         'Usuario' : usuario(request),
     }
-    print(context)
 
     return render(request,'redacao/listar.html', context)
 
