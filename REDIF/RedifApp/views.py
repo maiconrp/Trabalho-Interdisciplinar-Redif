@@ -10,6 +10,7 @@ from RedifApp.models import Redacao
 
 from datetime import datetime
 
+
 def home(request):
     return render(request,'home.html')
 
@@ -36,9 +37,7 @@ def criarRedacao(request):
 
     if request.method == 'GET':
         form = RedacaoForm()
-        context = {
-        'form' : form
-        }
+        context = {'form' : form}
         return render(request, 'redacao/criar.html', context=context)
     
     form = RedacaoForm(request.POST)
@@ -46,14 +45,11 @@ def criarRedacao(request):
 
     if form.is_valid():
         nova_redacao = form.save(commit=False)
-
         nova_redacao.data_criacao = datetime.now()
         nova_redacao.fk_autor = User.objects.get(pk=user)
         nova_redacao.save()
-        
         return redirect("/redif/listar")
         
-    
     context = {
         'form' : form
     }
