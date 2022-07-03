@@ -10,6 +10,10 @@ from RedifApp.models import Redacao
 
 from datetime import datetime
 
+def home(request):
+    return render(request,'home.html')
+
+
 def listarRedacao(request):
     Redacoes = Redacao.objects.all()
     context = {
@@ -45,8 +49,8 @@ def criarRedacao(request):
 
         nova_redacao.data_criacao = datetime.now()
         nova_redacao.fk_autor = User.objects.get(pk=user)
-
         nova_redacao.save()
+        
         return redirect("/redif/listar")
         
     
@@ -59,19 +63,20 @@ def criarRedacao(request):
 
 def detalharRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
-    autor = redacao.fk_autor.username
+
     context = {
         'Redacao' : redacao,
-        'autor' : autor
+        'Autor' : redacao.fk_autor.username
     }
 
     return render(request, 'redacao/detalhar.html', context)
+
 
 @login_required
 def editarRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
 
-    if redacao.fk_autor.id == request.user.id: 
+    if not redacao.fk_autor.id == request.user.id: 
         return redirect('/redif/listar')
     
     if request.method == "POST":
@@ -88,7 +93,6 @@ def editarRedacao(request, id):
     }
 
     return render(request, "redacao/editar.html", context)
-
 
 
 @login_required
