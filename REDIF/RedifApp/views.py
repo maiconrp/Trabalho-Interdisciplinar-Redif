@@ -11,23 +11,32 @@ from RedifApp.models import Redacao
 from datetime import datetime
 
 
+def usuario(request):
+    Usuario = False
+
+    if User.is_authenticated:
+        try: 
+            Usuario = request.user.id
+            Usuario = User.objects.get(pk=Usuario)
+        except: pass
+    
+    return Usuario
+
+
 def home(request):
-    return render(request,'home.html')
+    context = {
+        'Usuario' : usuario(request),
+    }
+    return render(request,'home.html', context)
 
 
 def listarRedacao(request):
     Redacoes = Redacao.objects.all()
     context = {
-        "Redacao": Redacoes,
-        'Logado': False,
-        'Usuario' : False,
+        'Redacao': Redacoes,
+        'Usuario' : usuario(request),
     }
-
-    if User.is_authenticated:
-        try:
-            context['Usuario'] = request.user.id
-            context['Logado'] = True
-        except: pass
+    print(context)
 
     return render(request,'redacao/listar.html', context)
 
@@ -37,7 +46,10 @@ def criarRedacao(request):
 
     if request.method == 'GET':
         form = RedacaoForm()
-        context = {'form' : form}
+        context = {
+            'form' : form,
+            'Usuario' : usuario(request),
+        }
         return render(request, 'redacao/criar.html', context=context)
     
     form = RedacaoForm(request.POST)
@@ -51,7 +63,8 @@ def criarRedacao(request):
         return redirect("/redif/listar")
         
     context = {
-        'form' : form
+            'form' : form,
+            'Usuario' : usuario(request),
     }
 
     return render(request, 'redacao/detalhar.html', context=context)
@@ -62,7 +75,7 @@ def detalharRedacao(request, id):
 
     context = {
         'Redacao' : redacao,
-        'Autor' : redacao.fk_autor.username
+        'Usuario' : usuario(request),
     }
 
     return render(request, 'redacao/detalhar.html', context)
@@ -86,6 +99,7 @@ def editarRedacao(request, id):
     context = {
         "form" : form,
         "id"   : id,
+        'Usuario' : usuario(request),
     }
 
     return render(request, "redacao/editar.html", context)
