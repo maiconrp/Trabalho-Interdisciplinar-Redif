@@ -2,7 +2,7 @@
 {% extends '-index.html' %}
 {% load static %}
 
-{% block title %}Redacoes{%endblock%}
+{% block head %}<title>Redacoes</title>{%endblock%}
 
 {%load static%}
 {% block content %}
@@ -18,7 +18,17 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="feature-icon mb-4"><i class="icofont-file-text"></i>
-                            <a href="/redif/detalhar/{{ r.id }}"><h4 class="mb-3">"{{r.titulo}}"</h4></a></div>
+                            <a href="/redif/detalhar/{{ r.id }}"><h4 class="mb-3">"{{r.titulo}}"</h4></a>
+                            <h6 class="card-subtitle mb-2 text-muted italic">
+                                Por <a href="/redif/perfil/{{r.fk_autor.username}}/">{{r.fk_autor.username}}</a>
+                            </h6>
+                            <div class="col-sm-6">
+                            <p class="card-text">Preview</p>
+                                <p class="card-text" style="text-indent: 2em; text-align: justify;">   
+                                    {{ r.conteudo|slice:"0:200" }} ...
+                                </p>
+                            </div>
+                        </div>
                         
                             <div class="row">
                                 <div class="col-sm-6">
