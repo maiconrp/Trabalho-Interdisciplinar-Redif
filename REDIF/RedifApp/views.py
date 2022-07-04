@@ -11,30 +11,20 @@ from RedifApp.models import Redacao
 from datetime import datetime
 
 
-def usuario(request):
-    Usuario = False
-
-    if User.is_authenticated:
-        try: 
-            Usuario = request.user.id
-            Usuario = User.objects.get(pk=Usuario)
-        except: pass
-    
-    return Usuario
-
 
 def home(request):
     context = {
-        'Usuario' : usuario(request),
+        'Usuario' : get_usuario(request),
     }
     return render(request,'home.html', context)
 
+# Views do crud Redacao
 
 def listarRedacao(request):
     Redacoes = Redacao.objects.all()
     context = {
         'Redacao': Redacoes,
-        'Usuario' : usuario(request),
+        'Usuario' : get_usuario(request),
     }
 
     return render(request,'redacao/listar.html', context)
@@ -47,7 +37,7 @@ def criarRedacao(request):
         form = RedacaoForm()
         context = {
             'form' : form,
-            'Usuario' : usuario(request),
+            'Usuario' : get_usuario(request),
         }
         return render(request, 'redacao/criar.html', context=context)
     
@@ -63,7 +53,7 @@ def criarRedacao(request):
         
     context = {
             'form' : form,
-            'Usuario' : usuario(request),
+            'Usuario' : get_usuario(request),
     }
 
     return render(request, 'redacao/detalhar.html', context=context)
@@ -74,7 +64,7 @@ def detalharRedacao(request, id):
 
     context = {
         'Redacao' : redacao,
-        'Usuario' : usuario(request),
+        'Usuario' : get_usuario(request),
     }
 
     return render(request, 'redacao/detalhar.html', context)
@@ -98,7 +88,7 @@ def editarRedacao(request, id):
     context = {
         "form" : form,
         "id"   : id,
-        'Usuario' : usuario(request),
+        'Usuario' : get_usuario(request),
     }
 
     return render(request, "redacao/editar.html", context)
@@ -110,4 +100,30 @@ def deletarRedacao(request, id):
     if redacao.fk_autor.id == request.user.id: 
         redacao.delete()
     return redirect('/redif/listar')
+
+
+# Views relacionadas ao usuario
+
+def get_usuario(request):
+    Usuario = False
+    
+    if User.is_authenticated:
+        try: 
+            Usuario = request.user.id
+            Usuario = User.objects.get(pk=Usuario)
+        except: pass
+    
+    return Usuario
+
+
+def perfilUsuario(request, usuario):
+    perfil = User.objects.filter(username = usuario)
+    Redacoes = Redacao.objects.filter(fk_autor= perfil[0])
+    context = {
+        'Redacao': list(Redacoes),
+        'Perfil' : perfil[0],
+        'Usuario' : get_usuario(request),
+    }
+    
+    return render(request,'redacao/redacoes-usuario.html', context)
 

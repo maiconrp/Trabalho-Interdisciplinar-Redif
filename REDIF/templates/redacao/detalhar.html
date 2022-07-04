@@ -20,7 +20,7 @@
                     <h1 class="fw-bolder mb-1">{{Redacao.titulo}}</h1>
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">Postado em {{Redacao.data_criacao}}</div>
-                    <div class="text-muted fst-italic mb-2">Por {{Redacao.fk_autor.username}}</div>
+                    <div class="text-muted fst-italic mb-2">Por <a href="/redif/perfil/{{Redacao.fk_autor.username}}/">{{Redacao.fk_autor.username}}</a> </div>
                     <!-- Post categories-->
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{Redacao.area}}</a>
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{Redacao.tema}}</a>
