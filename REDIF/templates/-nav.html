@@ -29,20 +29,22 @@
 			  </li>
 			   <li class="nav-item"><a class="nav-link" href="/redif/listar/">Redações</a></li>
 			   <li class="nav-item"><a class="nav-link" href="">Dicas de Estudos</a></li>
-
+			   {% if not Usuario%}
+			   <li class="nav-item"><a class="nav-link" href="/accounts/login/">Entrar</a></li>
+			   <li class="nav-item bg-primary "><a class="nav-link text-white" href="/accounts/registrar/">Cadastrar</a></li>
+						
+				{% endif %}
+				{% if Usuario%}
 			  	<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="{% static 'doctor.html' %}" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conta <i class="icofont-thin-down"></i></a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown03">
-						{% if Usuario%}
+						
 						<li><a class="dropdown-item" href="/redif/perfil/{{ Usuario.username }}"><img src="{% static 'img/registration/user.svg' %}" width="20px" height="15px" alt=""> {{ Usuario.username}}</a></li>
 						<li><a class="dropdown-item" href="/accounts/logout/">Sair</a></li>
-						{% endif %}
-						{% if not Usuario%}
-						<li><a class="dropdown-item" href="/accounts/login/">Entrar</a></li>
-						<li><a class="dropdown-item" href="/accounts/registrar/">Cadastrar</a></li>
-						{% endif %}
+						
 					</ul>
-			  	</li>			
+			  	</li>
+				{% endif %}		
 			</ul>
 		  </div>
 		</div>
