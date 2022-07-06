@@ -84,6 +84,9 @@ def detalharRedacao(request, id):
 def editarRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
     
+    if not usuario(request) == redacao.fk_autor:
+        print('Acesso negado')
+
     if request.method == "POST":
         form = RedacaoForm(request.POST, instance=redacao)
         if form.is_valid():
@@ -103,5 +106,7 @@ def editarRedacao(request, id):
 
 @login_required
 def deletarRedacao(request, id):
-    Redacao.objects.get(pk=id).delete()
+    redacao = Redacao.objects.get(pk=id)
+    if usuario(request) == redacao.fk_autor:
+        redacao.delete()
     return HttpResponseRedirect("/redif")
