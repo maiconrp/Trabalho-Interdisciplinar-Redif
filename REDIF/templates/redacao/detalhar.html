@@ -1,99 +1,95 @@
 {% extends '-index.html' %}
-{% load static %}
-
-{% block head %}
-<title>{{Redacao.titulo}}</title>
-<link rel="stylesheet" href="{% static 'css/redacoes/detalhar.css'%}">
-{%endblock%}
-
+{%load bootstrap%}
 {%load static%}
 {% block content %}
-<!-- Page content-->
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-8">
-            <!-- Post content-->
-            <article>
-                <!-- Post header-->
-                <header class="mb-4">
-                    <!-- Post title-->
-                    <h1 class="fw-bolder mb-1">{{Redacao.titulo}}</h1>
-                    <!-- Post meta content-->
-                    <div class="text-muted fst-italic mb-2">Postado em {{Redacao.data_criacao}}</div>
-                    <!-- Post categories-->
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{Redacao.area}}</a>
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{Redacao.tema}}</a>
-                </header>
-                <!-- Preview image figure-->
-                <!-- Post content-->
-                <section class="mb-5">
-                    <p class="fs-5 mb-4">{{Redacao.conteudo}}</p>
-                </section>
-            </article>
-
-            <!-- Comments section-->
-            <section class="mb-5">
-                <!-- Side widget-->
-            <div class="card mb-4">
-                <div class="card-header">Comentario de {{Redacao.fk_autor.username}}</div>
-                <div class="card-body">{{Redacao.comentario}}</div>
-            </div>
-                <div class="card bg-light">
-                    <div class="card-body">
-                        <!-- Comment form-->
-                        <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
-                        <!-- Comment with nested comments-->
-                        <div class="d-flex mb-4">
-                            <!-- Parent comment-->
-                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                            <div class="ms-3">
-                                <div class="fw-bold">Commenter Name</div>
-                                If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
-                                <!-- Child comment 1-->
-                                <div class="d-flex mt-4">
-                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                    <div class="ms-3">
-                                        <div class="fw-bold">Commenter Name</div>
-                                        And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
-                                    </div>
-                                </div>
-                                <!-- Child comment 2-->
-                                <div class="d-flex mt-4">
-                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                    <div class="ms-3">
-                                        <div class="fw-bold">Commenter Name</div>
-                                        When you put money directly to a problem, it makes a good headline.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single comment-->
-                        <div class="d-flex">
-                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                            <div class="ms-3">
-                                <div class="fw-bold">Commenter Name</div>
-                                When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <!-- Side widgets-->
-        <div class="col-lg-4">
-            <!-- Search widget-->
-            <div class="card mb-4">
-                <div class="card-header">Search</div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                    </div>
-                </div>
-            </div>
-            
+<div class="container-fluid col-9" >
+    <div class="feature-item row justify-content-center bg-danger"  style="height: 1rem;">
+        <div class="col-10">
+            <h3 class="text-white justify-content-center">
+                {{Redacao.titulo}}
+            </h3>
         </div>
     </div>
 </div>
-{% endblock %}
+<br>
 
+<div class="container-fluid col-9">
+    <div class="feature-item ">
+    <div class="row justify-content-center ">
+    <div class="col-10">
+        <div class="">
+            
+            <div class="">
+                <div style="--src:url(/assets/4ae8d3167282e29b0b409bc01c523684.png)" class="">
+                </div>
+            </div>
+            <div class="">
+                <div class="">
+                    <h4 class="">
+                        {{Redacao.fk_autor.username}}
+                    </h4>
+                    <small class="">Postado em {{Redacao.data_criacao}}</small>
+                </div>
+
+            </div>
+            <div class="divider mb-3"></div>
+            <h1 class="mb-3 mt-3"></h1>
+            <div class="">
+                <div class="">
+                    <article class="" style="text-align: justify;">
+                        <p class="" id="Introdução">
+                            Em “vidas secas”, obra literária de Graciliano Ramos, Fabiano e sua família vivem uma situação desgastante marcada principalmente pela miséria. No livro os filhos do protagonista não recebem nomes, sendo limitados a serem chamados de apenas “mais velho” e o “mais novo” recurso do autor para evidenciar a desumanização do individuo. Ao sairmos da literatura ainda sem desconsiderar o contexto histórico da obra podemos notar a problemática: a não garantia de cidadania pela invisibilidade da falta do registro civil, documento que garante acesso á cidadania no Brasil e previne a invisibilidade social. Nesse sentido, a ausência desse documento causa a marginalização da população e impede a evolução social dos brasileiros.
+                        </p>
+                        <p class=""id="Desenvolvimento 1">
+                            É nítido a deficiência do registro civil repercute, sem duvida na persistente falta de pertencimento do cidadão brasileiro. Assim para que haja uma cidadania completa no Brasil é necessária a existência também dos direitos sociais, políticos e civil não garantido é possível fazer com que a cidadania seja alcançada.
+                        </p>
+                        <p class="" id="Desenvolvimento 2">
+                            A falta de cidadania na população reflete na manutenção de uma sociedade excluída. De acordo com a analise da antropóloga brasileira Lilia Schwarcz, desde a independência do Brasil, não há a formação de um ideal de coletividade. Com isso se mantem o caráter de exclusão social, sobre tudo as pessoas que não tiveram o registro oficial.
+                        </p>
+                        <p class="justify-content" id="Conclusão">
+                            Portanto fica claro que medidas são necessárias para eliminar a invisibilidade social provocada pela ausência de registos civis. Nesse sentido, é importante que os tribunais de justiça de todo o território nacional ampliem programas para percorrer as cidades brasileiras para garantir a documentação de nascimento da população. Assim, será possível garantir com que mais cidadãos tenham acesso plenos aos seus direitos e possam participar ativamente da sociedade.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    </div>
+    <div class="row justify-content-end align-items-end">
+        <div class="col-9">Iae{{Redacao.Area}}|{{Redacao.tema}}</div>
+        <div class="col-1">10{{Redacao.numero_de_curtidas}}<a href=""><i class="icofont-heart ml-3"></i></a></div>
+        <div class="col-1">18{{Redacao.numero_de_curtidas}}<a href=""><i class="icofont-share ml-3"></i></a></div>
+        <div class="col-1">4{{Redacao.numero_de_curtidas}}<a href=""><i class="icofont-comment ml-3"></i></a></div>
+
+    </div>
+</div>
+<br> <form action="/redif/criar/" method="post">
+    {% csrf_token %}
+    
+    <input type="submit" class="btn btn-primary" value="Salvar">
+    <a href="/redif">
+        <button type="button" class="btn mb-1">
+            Cancelar <span class="btn-icon-right"> <i class="fa fa-close"></i> </span>
+        </button>
+    </a>
+</div></div>
+</form>
+<div class="container-fluid feature-item " style="height: auto;">
+        <div class="md-12">
+            <h1>
+                Comentários
+            </h1>
+            <div class="divider mb-3"></div>
+            <h1 class="mb-3 mt-3"></h1>
+        </div>
+
+        <div class="md-12">
+            
+        </div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

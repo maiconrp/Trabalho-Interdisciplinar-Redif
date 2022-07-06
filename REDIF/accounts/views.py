@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from accounts.forms import RegisterUserForm
 
@@ -7,7 +8,8 @@ def registrarUsuario(request):
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            return redirect('/redif/listar/')
+            #troco redirect por HttpResponseRedirect
+            return HttpResponseRedirect("/accounts/login")
     else:
         form = RegisterUserForm()
 

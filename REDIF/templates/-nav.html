@@ -1,63 +1,49 @@
 {%load bootstrap%}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-<header>
+<header style="background: #ffffff;">
 	<nav class="navbar navbar-expand-lg navigation" id="navbar">
-		<div class="container">
-		 
+		<div class="container align-items-center">
+			<a class="navbar-brand" href="\redif\home">
+				<img src="{% static 'images/logo.svg' %}" alt="" class="img-fluid" style="width: 7.5rem; height:auto">
+			</a>
+			<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain"
+				aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="icofont-navigation-menu"></span>
+			</button>
 
-		  	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="icofont-navigation-menu"></span>
-		  </button>
-	  
-		  <div class="collapse navbar-collapse" id="navbarmain">
-			<ul class="navbar-nav ml-auto">
-			  <li class="nav-item active">
-				<a class="nav-link" href="/redif/home">Tela inicial</a>
-			  </li>
-			   <li class="nav-item"><a class="nav-link" href="{% static 'about.html' %}">About</a></li>
-			    <li class="nav-item"><a class="nav-link" href="{% static 'service.html' %}">Services</a></li>
+			<div class="collapse navbar-collapse" id="navbarmain">
 
-			    <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="{% static 'department.html' %}" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown02">
-						<li><a class="dropdown-item" href="{% static 'department.html' %}">Departments</a></li>
-						<li><a class="dropdown-item" href="{% static 'department-single.html' %}">Department Single</a></li>
-					</ul>
-			  	</li>
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="#Pagina de Dicas">Quem Somos</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Redações<i
+								class="icofont-thin-down"></i></a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown02">
+							<li><a class="dropdown-item" href="/redif/criar">Enviar</a></li>
+							<li><a class="dropdown-item" href="/redif">Buscar</a></li>
+						</ul>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#Pagina de Dicas">Blog</a></li>
 
-			  	<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="{% static 'doctor.html' %}" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown03">
-						<li><a class="dropdown-item" href="{% static 'doctor.html' %}">Doctors</a></li>
-						<li><a class="dropdown-item" href="{% static 'doctor-single.html' %}">Doctor Single</a></li>
-						<li><a class="dropdown-item" href="{% static 'appoinment.html' %}">Appoinment</a></li>
-					</ul>
-			  	</li>
+					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 
-			   <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="{% static 'blog-sidebar.html' %}" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown05">
-						<li><a class="dropdown-item" href="{% static 'blog-sidebar.html' %}">Blog with Sidebar</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conta<i
+								class="icofont-thin-down"></i></a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown02">
+							<li><a class="dropdown-item" href="/accounts/login">Entre</a></li>
+							<li><a class="dropdown-item" href="/accounts/registrar">Cadastre-se</a></li>
+						</ul>
+					</li>
+					{%if user%}
+					<li class="nav-item"><a class="nav-link" href="contact.html">{{user}}</a></li>
+					{%endif%}
 
-						<li><a class="dropdown-item" href="{% static 'blog-single.html' %}">Blog Single</a></li>
-					</ul>
-			  	</li>
-			   <li class="nav-item"><a class="nav-link" href="{% static 'contact.html' %}">Contact</a></li>
-			</ul>
-		  </div>
+				</ul>
+			</div>
 		</div>
 	</nav>
 </header>
-</body>
-</html>

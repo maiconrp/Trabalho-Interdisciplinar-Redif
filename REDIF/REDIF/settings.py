@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'RedifApp.apps.RedifappConfig',
     'accounts.apps.AccountsConfig',
-    'bootstrapform'
+    'bootstrapform',
+    'multiselectfield' #campo de multipla escolha
 ]
 
 MIDDLEWARE = [
@@ -125,5 +126,5 @@ STATICFILES_DIRS = [ str(BASE_DIR) + "/static"]
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-LOGIN_REDIRECT_URL = '/redif/listar/'
+LOGIN_REDIRECT_URL = '/redif/home'
 LOGOUT_REDIRECT_URL = '/accounts/login'

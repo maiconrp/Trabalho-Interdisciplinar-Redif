@@ -6,5 +6,5 @@ from RedifApp.models import Redacao
 class RedacaoForm(forms.ModelForm):
     class Meta:
         model = Redacao
-        fields = ['titulo', 'area', 'tema', 'conteudo', 'comentario', ]
+        fields = ['titulo', 'area', 'tema', 'conteudo', 'descricao']
         

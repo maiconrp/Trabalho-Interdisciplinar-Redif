@@ -26,62 +26,10 @@
 
 <body id="top">
 
-	<header>
-		<nav class="navbar navbar-expand-lg navigation" id="navbar">
-			<div class="container">
+	<!-- Nav bar-->
+	{% include '-nav.html' %}
 
-				<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain"
-					aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="icofont-navigation-menu"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarmain">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active">
-							<a class="nav-link" href="/Home">Home</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-						<li class="nav-item"><a class="nav-link" href="#Pagina de Dicas">Services</a></li>
-
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02"
-								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department <i
-									class="icofont-thin-down"></i></a>
-							<ul class="dropdown-menu" aria-labelledby="dropdown02">
-								<li><a class="dropdown-item" href="department.html">Departments</a></li>
-								<li><a class="dropdown-item" href="department-single.html">Department Single</a></li>
-							</ul>
-						</li>
-
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="doctor.html" id="dropdown03"
-								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors <i
-									class="icofont-thin-down"></i></a>
-							<ul class="dropdown-menu" aria-labelledby="dropdown03">
-								<li><a class="dropdown-item" href="doctor.html">Doctors</a></li>
-								<li><a class="dropdown-item" href="doctor-single.html">Doctor Single</a></li>
-								<li><a class="dropdown-item" href="appoinment.html">Appoinment</a></li>
-							</ul>
-						</li>
-
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="blog-sidebar.html" id="dropdown05"
-								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i
-									class="icofont-thin-down"></i></a>
-							<ul class="dropdown-menu" aria-labelledby="dropdown05">
-								<li><a class="dropdown-item" href="blog-sidebar.html">Blog with Sidebar</a></li>
-
-								<li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
-							</ul>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</header>
-
-	<!-- Slider Start -->
+	<!-- Headline inicio -->
 	<section class="banner">
 		<div class="container">
 			<div class="row">
@@ -102,6 +50,7 @@
 		</div>
 	</section>
 
+	<!-- Section Redações -->
 	<section class="features">
 		<div class="container">
 			<div class="row">
@@ -138,7 +87,7 @@
 		</div>
 	</section>
 
-
+	<!-- Section Blog -->
 	<section class="section about">
 		<div class="container">
 			<div class="row align-items-center">
@@ -155,15 +104,17 @@
 				</div>
 				<div class="col-lg-4">
 					<div class="about-content pl-4 mt-4 mt-lg-0" id="Pagina de Dicas">
-						<h2 class="title-color">Perdido <br>sobre como<br>escrever uma redação?</h2>
-						<p class="mt-2 mb-2"><em>Nossa página de dicas torna <br>tudo mais fácil</em></p>
-						<a href="blog-sidebar.html" class="btn btn-main-2 btn-round-full btn-icon">Quero facilitar<i
+						<h2 class="title-color">Problemas em<br>escrever uma redação?</h2>
+						<p class="mt-2 mb-2"><em>Nosso blog de dicas torna tudo mais fácil</em></p>
+						<a href="blog-sidebar.html" class="btn btn-main-2 btn-round-full btn-icon">Visitar<i
 								class="icofont-simple-right ml-3"></i></a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+
+	<!-- Section CTA -->
 	<section class="cta-section ">
 		<div class="container">
 			<div class="cta position-relative">
@@ -172,14 +123,14 @@
 						<div class="counter-stat">
 							<i class="icofont-speed"></i>
 							<span class="h3">58</span>k
-							<p>VELOZ</p>
+							<p>COMPARTILHE</p>
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-6 col-sm-6">
 						<div class="counter-stat">
 							<i class="icofont-flag"></i>
 							<span class="h3">700</span>+
-							<p>QUALIDADE</p>
+							<p>AVALIE</p>
 						</div>
 					</div>
 
@@ -187,33 +138,36 @@
 						<div class="counter-stat">
 							<i class="icofont-computer"></i>
 							<span class="h3">40</span>+
-							<p>VERSÁTIL</p>
+							<p>INSPIRE-SE</p>
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-6 col-sm-6">
 						<div class="counter-stat">
 							<i class="icofont-globe"></i>
 							<span class="h3">20</span>
-							<p>Worldwide Branch</p>
+							<p>EVOLUA</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+
+	<!-- Section AREA -->
 	<section class="section service gray-bg">
 		<div class="container">
+			<!-- TITULO -->
 			<div class="row justify-content-center">
 				<div class="col-lg-8 text-center">
 					<div class="section-title">
-						<h2>Não faz ideia de por onde começar?</h2>
+						<h2>Não sabe por onde começar?</h2>
 						<div class="divider mx-auto my-1"></div>
 						<p>Considere ler redações por áreas. Basta escolher uma e se inspirar:</p>
 					</div>
 				</div>
 			</div>
-
-			<div class="row">
+			<!-- AREAS -->
+			<div class="row justify-content-center">
 				<div class="col-lg-4 col-md-6 col-sm-6">
 					<div class="service-item mb-4">
 						<div class="icon d-flex align-items-center">
@@ -251,7 +205,6 @@
 					</div>
 				</div>
 
-
 				<div class="col-lg-4 col-md-6 col-sm-6">
 					<div class="service-item mb-4">
 						<div class="icon d-flex align-items-center">
@@ -288,10 +241,14 @@
 						</div>
 					</div>
 				</div>
+				<div class="btn-container ">
+					<a href="redif/" class="btn btn-main-2 btn-icon btn-round-full">Ver mais</a>
+				</div>
 			</div>
 		</div>
+		
 	</section>
-
+	<!-- Section COMENTÁRIOS -->
 	<section class="section testimonial-2 gray-bg">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -504,9 +461,7 @@
 
 
 
-	<!-- 
-    Essential Scripts
-    =====================================-->
+	<!-- Essential Scripts =====================================-->
 
 
 	<!-- Main jQuery -->
@@ -524,8 +479,7 @@
 	<script src="{% static 'plugins/counterup/jquery.counterup.min.js' %}"></script>
 	<!-- Google Map -->
 	<script src="{% static 'plugins/google-map/map.js' %}"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
 
 	<script src="{% static 'js/script.js' %}"></script>
 	<script src="{% static 'js/contact.js' %}"></script>

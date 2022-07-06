@@ -1,0 +1,521 @@
+@import "utils";
+
+$color_type_0: rgb(0, 0, 0);
+$color_type_1: rgb(225, 36, 84);
+$color_type_2: rgb(244, 249, 252);
+$color_type_3: rgb(255, 255, 255);
+
+$font_type_0: 900 22px/1.39 "Exo", Helvetica, Arial, serif;
+$font_type_1: 500 18.15428352355957px/1.43 "Exo", Helvetica, Arial, serif;
+$font_type_2: 17px/1.8 "Exo", Helvetica, Arial, serif;
+$font_type_3: 10.582509994506836px/2.46 "Exo", Helvetica, Arial, serif;
+
+.untitled-page-flex {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0px 0px 36px 0px rgba(0, 42, 106, 0.0980392157);
+  border-radius: 18px 18px 18px 18px;
+}
+.untitled-page-flex.layout {
+  position: relative;
+  min-height: 903px;
+}
+.untitled-page-bootstrap-grid {
+  background-color: #e12454;
+  width: 100%;
+  height: 100%;
+}
+.untitled-page-bootstrapGrid-item {
+  display: flex;
+}
+.untitled-page-txt-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 1199px) {
+  .untitled-page-txt-box {
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 991px) {
+  .untitled-page-txt-box {
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 767px) {
+  .untitled-page-txt-box {
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 575px) {
+  .untitled-page-txt-box {
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 383px) {
+  .untitled-page-txt-box {
+    align-items: center;
+    justify-content: center;
+  }
+}
+.untitled-page-txt-box.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  width: 99.84%;
+  margin: 17.5px auto;
+}
+.untitled-page-txt {
+  overflow: visible;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin: 0px;
+  font: 900 22px/1.39 "Exo", Helvetica, Arial, serif;
+  color: #f4f9fc;
+  text-align: center;
+  letter-spacing: 0px;
+  white-space: pre-wrap;
+}
+@media (max-width: 1199px) {
+  .untitled-page-txt {
+    font-size: 21px;
+    text-align: center;
+  }
+}
+@media (max-width: 991px) {
+  .untitled-page-txt {
+    font-size: 19px;
+  }
+}
+@media (max-width: 767px) {
+  .untitled-page-txt {
+    font-size: 18px;
+  }
+}
+@media (max-width: 575px) {
+  .untitled-page-txt {
+    font-size: 17px;
+  }
+}
+@media (max-width: 383px) {
+  .untitled-page-txt {
+    font-size: 16px;
+  }
+}
+.untitled-page-bootstrap-grid1 {
+  width: 100%;
+  height: 100%;
+}
+.untitled-page-flex1 {
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+}
+.untitled-page-img {
+  background: var(--src) center center/contain no-repeat;
+}
+.untitled-page-img.layout {
+  position: relative;
+  height: 45px;
+  width: 45px;
+  min-width: 45px;
+  margin: 15px 0px;
+}
+.untitled-page-group {
+  display: flex;
+  flex-direction: column;
+}
+.untitled-page-group.layout {
+  position: relative;
+  flex-grow: 1;
+  min-height: 38px;
+  width: 120px;
+  min-width: 120px;
+  margin: 19px 0px 18px 0px;
+}
+.untitled-page-txt1 {
+  font: 500 18.1542835236px/1.43 "Exo", Helvetica, Arial, serif;
+  color: black;
+  text-align: justify;
+  letter-spacing: 0px;
+}
+@media (max-width: 1199px) {
+  .untitled-page-txt1 {
+    font-size: 17px;
+    text-align: justify;
+  }
+}
+@media (max-width: 991px) {
+  .untitled-page-txt1 {
+    font-size: 16px;
+  }
+}
+@media (max-width: 767px) {
+  .untitled-page-txt1 {
+    font-size: 15px;
+  }
+}
+@media (max-width: 479px) {
+  .untitled-page-txt1 {
+    font-size: 14px;
+  }
+}
+.untitled-page-txt1.layout {
+  position: absolute;
+  top: 0px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 11px;
+  left: 0px;
+  width: 54px;
+  min-width: 54px;
+}
+.untitled-page-txt2 {
+  display: flex;
+  align-items: center;
+  font: 10.5825099945px/2.46 "Exo", Helvetica, Arial, serif;
+  color: black;
+  text-align: justify;
+  letter-spacing: 0px;
+}
+.untitled-page-txt2.layout {
+  position: absolute;
+  top: 26px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+.untitled-page-bootstrap-grid2 {
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 1199px) {
+  .untitled-page-txt3-box {
+    align-items: flex-start;
+  }
+}
+@media (max-width: 991px) {
+  .untitled-page-txt3-box {
+    align-items: flex-start;
+  }
+}
+@media (max-width: 767px) {
+  .untitled-page-txt3-box {
+    align-items: flex-start;
+  }
+}
+@media (max-width: 479px) {
+  .untitled-page-txt3-box {
+    align-items: flex-start;
+  }
+}
+.untitled-page-txt3-box.layout {
+  position: relative;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin: 25px 10px;
+}
+@media (max-width: 1199px) {
+  .untitled-page-txt3-box.layout {
+    margin: 22px 9px;
+  }
+}
+@media (max-width: 991px) {
+  .untitled-page-txt3-box.layout {
+    margin: 19px 7px;
+  }
+}
+@media (max-width: 767px) {
+  .untitled-page-txt3-box.layout {
+    margin: 16px 6px;
+  }
+}
+@media (max-width: 575px) {
+  .untitled-page-txt3-box.layout {
+    margin: 14px 6px;
+  }
+}
+@media (max-width: 479px) {
+  .untitled-page-txt3-box.layout {
+    margin: 13px 5px;
+  }
+}
+@media (max-width: 383px) {
+  .untitled-page-txt3-box.layout {
+    margin: 12px 5px;
+  }
+}
+.untitled-page-txt3 {
+  overflow: visible;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin: 0px;
+  font: 17px/1.8 "Exo", Helvetica, Arial, serif;
+  color: black;
+  text-align: justify;
+  letter-spacing: 0px;
+  white-space: pre-wrap;
+}
+@media (max-width: 1199px) {
+  .untitled-page-txt3 {
+    font-size: 16px;
+    text-align: justify;
+  }
+}
+@media (max-width: 991px) {
+  .untitled-page-txt3 {
+    font-size: 15px;
+  }
+}
+@media (max-width: 767px) {
+  .untitled-page-txt3 {
+    font-size: 14px;
+  }
+}
+@media (max-width: 479px) {
+  .untitled-page-txt3 {
+    font-size: 13px;
+  }
+}
+
+.untitled-page-{
+  &flex {
+    @include flex-column;
+    background-color: $color_type_3;
+    box-shadow: 0px 0px 36px 0px rgba(0, 42, 106, 0.09803921568627451);
+    border-radius: 18px 18px 18px 18px;
+  }
+  &flex.layout {
+    position: relative;
+    min-height: 903px;
+  }
+  &bootstrap-grid {
+    background-color: $color_type_1;
+    width: 100%;
+    height: 100%;
+  }
+  &bootstrapGrid-item {
+    display: flex;
+  }
+  &txt-box {
+    @include v-center-content;
+    justify-content: center;
+    @include lg {
+      align-items: center;
+      justify-content: center;
+    }
+    @include md {
+      align-items: center;
+      justify-content: center;
+    }
+    @include sm {
+      align-items: center;
+      justify-content: center;
+    }
+    @include xs {
+      align-items: center;
+      justify-content: center;
+    }
+    @include tn {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  &txt-box.layout {
+    position: relative;
+    height: min-content;
+    margin: 17.5px 1px;
+    @include lg {
+      margin: 15px 0px;
+    }
+    @include md {
+      margin: 13px 0px;
+    }
+    @include sm {
+      margin: 11px 0px;
+    }
+    @include xs {
+      margin: 10px 0px;
+    }
+    @include xxs {
+      margin: 9px 0px;
+    }
+    @include tn {
+      margin: 8px 0px;
+    }
+  }
+  &txt {
+    overflow: visible;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin: 0px;
+    font: $font_type_0;
+    color: $color_type_2;
+    text-align: center;
+    letter-spacing: 0px;
+    white-space: pre-wrap;
+    @include lg {
+      font-size: 21px;
+      text-align: center;
+    }
+    @include md {
+      font-size: 19px;
+    }
+    @include sm {
+      font-size: 18px;
+    }
+    @include xs {
+      font-size: 17px;
+    }
+    @include tn {
+      font-size: 16px;
+    }
+  }
+  &bootstrap-grid1 {
+    width: 100%;
+    height: 100%;
+  }
+  &flex1 {
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+  }
+  &img {
+    background: var(--src) center center / contain no-repeat;
+  }
+  &img.layout {
+    position: relative;
+    height: 45px;
+    width: 45px;
+    min-width: 45px;
+    margin: 15px 0px;
+  }
+  &group {
+    @include flex-column;
+  }
+  &group.layout {
+    position: relative;
+    height: 38px;
+    margin: 19px 0px 18px;
+  }
+  &txt1 {
+    font: $font_type_1;
+    color: $color_type_0;
+    text-align: justify;
+    letter-spacing: 0px;
+    @include lg {
+      font-size: 17px;
+      text-align: justify;
+    }
+    @include md {
+      font-size: 16px;
+    }
+    @include sm {
+      font-size: 15px;
+    }
+    @include xxs {
+      font-size: 14px;
+    }
+  }
+  &txt1.layout {
+    position: absolute;
+    top: 0px;
+    height: min-content;
+    bottom: 11px;
+    left: 0px;
+    width: 54px;
+    min-width: 54px;
+  }
+  &txt2 {
+    @include v-center-content;
+    font: $font_type_3;
+    color: $color_type_0;
+    text-align: justify;
+    letter-spacing: 0px;
+  }
+  &txt2.layout {
+    position: absolute;
+    top: 26px;
+    height: min-content;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+  }
+  &bootstrap-grid2 {
+    width: 100%;
+    height: 100%;
+  }
+  &txt3-box {
+    @include lg {
+      align-items: flex-start;
+    }
+    @include md {
+      align-items: flex-start;
+    }
+    @include sm {
+      align-items: flex-start;
+    }
+    @include xxs {
+      align-items: flex-start;
+    }
+  }
+  &txt3-box.layout {
+    position: relative;
+    height: min-content;
+    margin: 25px 10px;
+    @include lg {
+      margin: 22px 9px;
+    }
+    @include md {
+      margin: 19px 7px;
+    }
+    @include sm {
+      margin: 16px 6px;
+    }
+    @include xs {
+      margin: 14px 6px;
+    }
+    @include xxs {
+      margin: 13px 5px;
+    }
+    @include tn {
+      margin: 12px 5px;
+    }
+  }
+  &txt3 {
+    overflow: visible;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin: 0px;
+    font: $font_type_2;
+    color: $color_type_0;
+    text-align: justify;
+    letter-spacing: 0px;
+    white-space: pre-wrap;
+    @include lg {
+      font-size: 16px;
+      text-align: justify;
+    }
+    @include md {
+      font-size: 15px;
+    }
+    @include sm {
+      font-size: 14px;
+    }
+    @include xxs {
+      font-size: 13px;
+    }
+  }
+}

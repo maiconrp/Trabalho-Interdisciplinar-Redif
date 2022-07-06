@@ -1,31 +1,51 @@
+
 {% extends '-index.html' %}
-{% load static %}
 
-{% block title %}<title>Compartilhar redacão</title> {%endblock%}
-{% block head %}
-<link rel="stylesheet" href="{% static 'css/redacoes/style.css'%}">
-{%endblock%}
-
-
+{%load bootstrap%}
 {%load static%}
-
 {% block content %}
-<main>
-    <section  id="xctn-1">
-        <section id="xctn-2">
-            <h1>Compartilhar Redacao</h1>
-            <form action="." method="post" id="xctn-2">
-                {% csrf_token %}
-                {{ form.as_ul }}
-                <input type="submit" value="Compartilhar">
-            </form>
-            <aside>
-                <div id="more">
-                    <a href="/redif/listar/"><button class="btn">Cancelar</button></a>
-                </div>
-            </aside>
-        </section>
-    </section>
-</main>
+
+<div class="row justify-content-center">
+    <div class="col-9">
+        <div class="feature-item mb-5 mb-lg-0">
+            <div class="card-body">
+                <form action="/redif/criar/" method="post">
+                    {% csrf_token %}
+
+                    {{ form|bootstrap }}
+                    <input type="submit" class="btn btn-primary" value="Salvar">
+                    <a href="/redif">
+                        <button type="button" class="btn mb-1">
+                            Cancelar <span class="btn-icon-right"> <i class="fa fa-close"></i> </span>
+                        </button>
+                    </a>
+                </div></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="row">
+    <div class="col-md-6">
+        <label for="inputText" class="form-label">Titulo</label>
+        <input type="text" class="form-control" id="inputTitulo">
+    </div>
+    <div class="col-md-3">
+        <label for="inputTema" class="form-label">Tema</label>
+        <input type="text" class="form-control" id="inputTema">
+    </div>
+    <div class="col-md-3">
+        <label for="inputState" class="form-label">State</label>
+        <select class="form-select" aria-label="Default select example" id="inputState">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+    </div>
+</div> -->
+
 {% endblock %}
+
 

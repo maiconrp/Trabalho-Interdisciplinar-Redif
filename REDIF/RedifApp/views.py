@@ -1,54 +1,72 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponseRedirect, render
 
-from django.contrib.auth.models import User
-from RedifApp.forms import RedacaoForm
-from RedifApp.models import Redacao
 
-from datetime import datetime
+from RedifApp.forms import RedacaoForm
+
+#importo a classe usuário
+from RedifApp.models import Redacao, Usuario
+
+# remover
+# from django.contrib.auth.models import User
+# from datetime import datetime
+
+#ainda falta mesclar com algumas alterações da views da master
+
+#O que antes era classe "User", passa a ser "Usuario"
+
+#melhor coisa essa funçãokkkkkkkk salvou
+def usuario(request):
+    user = False
+    if Usuario.is_authenticated:
+        try: 
+            user = request.user.id
+            user = Usuario.objects.get(pk=user)
+        except: 
+            pass
+    return user
+
+#-------------------------------------------------
 
 def home(request):
-    return render(request, "home.html")
+    context = {
+        'Usuario' : usuario(request),
+    }
+    return render(request, "home.html", context)
+
+#-------------------------------------------------
 
 def listarRedacao(request):
     Redacoes = Redacao.objects.all()
-
     context = {
-        "Redacao": Redacoes
+        "Redacao": Redacoes,
+        'Usuario' : usuario(request),
         }
-
-    if User.is_authenticated:
-        try:
-            Usuario = request.user.id
-            context ["Usuario"] = User.objects.get(pk=Usuario)
-            context ["Logado"]  = True
-
-        except: pass
-
     return render(request,"redacao/listar.html", context)
+
+#-------------------------------------------------
 
 @login_required
 def criarRedacao(request):
-    user = request.user.id
-    form = RedacaoForm(request.POST)
-
-    if request.method == "POST":
+    
+    if request.method == 'POST':
+        form = RedacaoForm(request.POST)
         if form.is_valid():
             nova_redacao = form.save(commit=False)
-
-            nova_redacao.data_criacao = datetime.now()
-            nova_redacao.fk_autor = User.objects.get(pk=user)
-
+            nova_redacao.fk_autor = usuario(request)
             nova_redacao.save()
+            context = {'form' : form,'Usuario' : usuario(request)}
             return HttpResponseRedirect("/redif")
-        else:
-            form = RedacaoForm()
+    else:
+        form = RedacaoForm()
 
     context = {
-        "form": form
+        'form' : form,
+        'Usuario' : usuario(request),
     }
-
-    return render(request, "redacao/criar.html", context)
+    return render(request, 'redacao/criar.html', context)
+    
+#-------------------------------------------------
 
 def detalharRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
@@ -59,6 +77,8 @@ def detalharRedacao(request, id):
         "autor"   : autor
     }
     return render(request, "redacao/detalhar.html", context)
+  
+#-------------------------------------------------
 
 @login_required
 def editarRedacao(request, id):
@@ -78,6 +98,8 @@ def editarRedacao(request, id):
     }
 
     return render(request, "redacao/editar.html", context)
+
+#-------------------------------------------------
 
 @login_required
 def deletarRedacao(request, id):
