@@ -1,11 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponseRedirect, render
 
-
-from RedifApp.forms import RedacaoForm
+from RedifApp.forms import RedacaoForm, AvaliacaoForm
 
 #importo a classe usuário
-from RedifApp.models import Redacao, Usuario
+from RedifApp.models import Redacao, Usuario, Avaliacao
 
 # remover
 # from django.contrib.auth.models import User
@@ -66,15 +65,17 @@ def criarRedacao(request):
     }
     return render(request, 'redacao/criar.html', context)
     
-#-------------------------------------------------
+#-------------------------------------------------z
 
 def detalharRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
     autor = redacao.fk_autor.username
 
     context = {
+        "TabelaAvaliacoes": Avaliacao,
         "Redacao" : redacao,
-        "autor"   : autor
+        "autor"   : autor,
+        'Usuario' : usuario(request),
     }
     return render(request, "redacao/detalhar.html", context)
   
@@ -93,8 +94,11 @@ def editarRedacao(request, id):
         form = RedacaoForm(instance=redacao)
 
     context = {
+        "url" : request.build_absolute_uri(),
+        "Redacao" : redacao,
         "form" : form,
         "id"   : id,
+        'Usuario' : usuario(request),
     }
 
     return render(request, "redacao/editar.html", context)
@@ -105,3 +109,35 @@ def editarRedacao(request, id):
 def deletarRedacao(request, id):
     Redacao.objects.get(pk=id).delete()
     return HttpResponseRedirect("/redif")
+
+def addAvaliacao(request, id):
+
+    # usuario = request.user.id
+    if request.method == "POST":
+        # form = AvaliacaoForm(request.POST, instance=redacao)
+        comentario = request.POST.get("comentario")
+        nota = request.POST.get("nota")
+        print(comentario, nota)
+        avaliacao = Redacao.objects.get(pk=id)
+        try:
+            print(avaliacao.Usuario_avalicao.first().usermame)
+        except:pass
+        avaliacao.avaliacoes.add(
+            usuario(request), 
+            through_defaults = {
+                'comentario': comentario, 
+                'nota' : nota
+                }
+            )      
+        avaliacao.save()
+
+        
+        # (pk=usuario(request)).comentario       
+        return HttpResponseRedirect("/redif/detalhar/"+str(id))
+    else:
+        form = AvaliacaoForm()
+
+    
+
+    return render(request, "redacao/detalhar.html")
+

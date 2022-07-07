@@ -70,26 +70,32 @@ class Redacao(models.Model):
     #Relaciono redação com a classe Usuario - N - N = "N  Usuarios escrevem N redações" 
     avaliacoes = models.ManyToManyField(
         Usuario, 
-        related_name="Avaliacoes",
-        through="Avaliacoes"
+        related_name="redacoesAvaliadas",
+        through="Avaliacao"
     )
 
 #conclui
-class Avaliacoes(models.Model):
+class Avaliacao(models.Model):
     usuario = models.ForeignKey(
         Usuario,
         on_delete=models.CASCADE,
-        related_name='Usuario_avalicao'
+        related_name='Usuario_avaliacao'
     )
     redacao = models.ForeignKey(
         Redacao,
         on_delete=models.CASCADE,
-        related_name='Redacao_avaliacao'
+        related_name='Usuario_avaliacao'
     )
     comentario = models.TextField(
         max_length=300, 
     )
     nota = models.SmallIntegerField()
+    
+    data_criacao = models.DateTimeField(
+        default=datetime.date.today
+    )
+    def __str__(self):
+        return "Avaliador: {} - Redação Avaliada: {} - Nota dada: {}\n".format(self.usuario.username, self.redacao.titulo, self.nota)
     
 
 
