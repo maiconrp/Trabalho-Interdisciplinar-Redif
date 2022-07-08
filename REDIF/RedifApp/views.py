@@ -26,6 +26,23 @@ def usuario(request):
             pass
     return user
 
+
+
+def filtrar(request):
+    titulo = request.GET.get('titulo')
+    area = request.GET.get('area')
+    tema = request.GET.get('tema')
+    autor = request.GET.get('autor')
+
+    redacoes = Redacao.objects.all()
+
+    if titulo: redacoes.filter(titulo__icontains = titulo) 
+    if area: redacoes.filter(area__icontains = area) 
+    if tema: redacoes.filter(tema__icontains = tema) 
+    if autor: redacoes.filter(autor__icontains = autor) 
+
+    return redacoes
+
 #-------------------------------------------------
 
 def home(request):
@@ -38,6 +55,9 @@ def home(request):
 
 def listarRedacao(request):
     Redacoes = Redacao.objects.all()
+    if request.GET:
+        print('oi')
+        
     context = {
         "Redacao": Redacoes,
         'Usuario' : usuario(request),
