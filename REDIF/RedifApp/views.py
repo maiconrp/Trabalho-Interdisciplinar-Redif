@@ -1,45 +1,30 @@
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import HttpResponseRedirect, render
+from django.shortcuts import redirect, render
 
+from django.contrib.auth.models import User
+from matplotlib.style import context
+from requests import request
+from RedifApp.forms import RedacaoForm, FiltroForm
+from RedifApp.models import Redacao
 
-from RedifApp.forms import RedacaoForm
-
-#importo a classe usuário
-from RedifApp.models import Redacao, Usuario
-
-# remover
-# from django.contrib.auth.models import User
-# from datetime import datetime
-
-#ainda falta mesclar com algumas alterações da views da master
-
-#O que antes era classe "User", passa a ser "Usuario"
-
-#melhor coisa essa funçãokkkkkkkk salvou
-def usuario(request):
-    user = False
-    if Usuario.is_authenticated:
-        try: 
-            user = request.user.id
-            user = Usuario.objects.get(pk=user)
-        except: 
-            pass
-    return user
+from datetime import datetime
 
 
 
-def filtrar(request):
-    titulo = request.GET.get('titulo')
-    area = request.GET.get('area')
-    tema = request.GET.get('tema')
-    autor = request.GET.get('autor')
-
+def filtrar(form):
     redacoes = Redacao.objects.all()
 
-    if titulo: redacoes.filter(titulo__icontains = titulo) 
-    if area: redacoes.filter(area__icontains = area) 
-    if tema: redacoes.filter(tema__icontains = tema) 
-    if autor: redacoes.filter(autor__icontains = autor) 
+    if not form.is_valid(): return redacoes
+
+    titulo = form.cleaned_data['titulo']
+    area = form.cleaned_data['area']
+    tema = form.cleaned_data['tema']
+
+    if titulo: redacoes = redacoes.filter(titulo__icontains=  titulo) 
+    if area: redacoes = redacoes.exclude(area__icontains = area)
+    print("area:", area, '\n', redacoes)
+    if tema: redacoes = redacoes.filter(tema__icontains = tema) 
 
     return redacoes
 
@@ -54,79 +39,111 @@ def home(request):
 #-------------------------------------------------
 
 def listarRedacao(request):
-    Redacoes = Redacao.objects.all()
-    if request.GET:
-        print('oi')
-        
+    form = FiltroForm(request.POST)
+    Redacoes = filtrar(form)
+
     context = {
         "Redacao": Redacoes,
         'Usuario' : usuario(request),
-        }
+        'form' : form,
+    }
     return render(request,"redacao/listar.html", context)
 
-#-------------------------------------------------
+    return render(request,'redacao/listar.html', context)
+
 
 @login_required
 def criarRedacao(request):
-    
-    if request.method == 'POST':
-        form = RedacaoForm(request.POST)
-        if form.is_valid():
-            nova_redacao = form.save(commit=False)
-            nova_redacao.fk_autor = usuario(request)
-            nova_redacao.save()
-            context = {'form' : form,'Usuario' : usuario(request)}
-            return HttpResponseRedirect("/redif")
-    else:
-        form = RedacaoForm()
 
-    context = {
-        'form' : form,
-        'Usuario' : usuario(request),
-    }
-    return render(request, 'redacao/criar.html', context)
+    if request.method == 'GET':
+        form = RedacaoForm()
+        context = {
+            'form' : form,
+            'Usuario' : usuario(request),
+        }
+        return render(request, 'redacao/criar.html', context=context)
     
-#-------------------------------------------------
+    form = RedacaoForm(request.POST)
+    user = request.user.id
+
+    if form.is_valid():
+        nova_redacao = form.save(commit=False)
+        nova_redacao.data_criacao = datetime.now()
+        nova_redacao.fk_autor = User.objects.get(pk=user)
+        nova_redacao.save()
+        return redirect("/redif/listar")
+        
+    context = {
+            'form' : form,
+            'Usuario' : usuario(request),
+    }
+
+    return render(request, 'redacao/detalhar.html', context=context)
+
 
 def detalharRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
-    autor = redacao.fk_autor.username
 
     context = {
-        "Redacao" : redacao,
-        "autor"   : autor
+        'Redacao' : redacao,
+        'Usuario' : usuario(request),
     }
-    return render(request, "redacao/detalhar.html", context)
-  
-#-------------------------------------------------
+
+    return render(request, 'redacao/detalhar.html', context)
+
 
 @login_required
 def editarRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
-    
-    if not usuario(request) == redacao.fk_autor:
-        print('Acesso negado')
 
+    if not redacao.fk_autor.id == request.user.id: 
+        return redirect('/redif/listar')
+    
     if request.method == "POST":
         form = RedacaoForm(request.POST, instance=redacao)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("/redif/")
+            return redirect("/redif/listar/")
     else:
         form = RedacaoForm(instance=redacao)
 
     context = {
         "form" : form,
         "id"   : id,
+        'Usuario' : usuario(request),
     }
 
     return render(request, "redacao/editar.html", context)
 
-#-------------------------------------------------
 
 @login_required
 def deletarRedacao(request, id):
     redacao = Redacao.objects.get(pk=id)
-    if usuario(request) == redacao.fk_autor:
+    if redacao.fk_autor.id == request.user.id: 
         redacao.delete()
-    return HttpResponseRedirect("/redif")
+    return redirect('/redif/listar')
+
+
+# Views relacionadas ao usuario
+
+def usuario(request):
+    Usuario = False
+    
+    if User.is_authenticated:
+        try: 
+            Usuario = request.user.id
+            Usuario = User.objects.get(pk=Usuario)
+        except: pass
+    
+    return Usuario
+
+
+def perfilUsuario(request, usuario):
+    perfil = User.objects.get(pk = request.user.id)
+    Redacoes = Redacao.objects.filter(fk_autor= perfil)
+    context = {
+        'Redacao': list(Redacoes),
+    }
+    
+    return render(request,'redacao/redacoes-usuario.html', context)
+

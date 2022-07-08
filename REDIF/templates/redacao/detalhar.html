@@ -27,6 +27,9 @@
                 <div class="">
                     <h4 class="">
                         {{Redacao.fk_autor.username}}
+                        {%for i in Redacao.area %}
+                        <p>i</p> 
+                        {%endfor%}
                     </h4>
                     <small class="">Postado em {{Redacao.data_criacao}}</small>
                 </div>

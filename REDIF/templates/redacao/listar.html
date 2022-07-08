@@ -1,13 +1,27 @@
 
 {% extends '-index.html' %}
 {% load static %}
+{%load bootstrap%}
 
 {% block title %}Redacoes{%endblock%}
 
-{%load static%}
+
 {% block content %}
-<div class="row">
-    <div class="col-12">
+<div class="row mr-2 ml-2">
+
+    <div class="col- ml-4">
+        <form action="." method="POST">
+            <div class="card mb-4 pr-2 pl-2">
+                <div class="card-header mt-1">Filtros</div>
+                {% csrf_token %}
+                {{ form|bootstrap }}
+                <button class="btn btn-primary" id="button-search" type="submit">Go!</button>
+            </div>
+        </form>
+    </div>
+       
+
+    <div class="col-md">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Suas redações: </h1>

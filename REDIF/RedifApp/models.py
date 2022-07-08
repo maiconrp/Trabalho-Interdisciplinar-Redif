@@ -127,5 +127,36 @@ class Avaliacoes(models.Model):
 
 
 
-# class Comentario:
+class Filtro(models.Model):
+    #area como um campo de multipla escolha
+    AREA_CHOICES = (
+        ("CET","Ciencias Exatas e da Terra"),
+        ("CB","Ciências Biológicas"),
+        ("CSA", "Ciências Sociais Aplicadas"),
+        ("E","Engenharias"),
+        ("LLA","Linguística, Letras e Artes"),        
+        ("CH", "Ciências Humanas")
+    )
+    titulo = models.CharField(
+        max_length = 45, 
+        blank = True,
+        null = True,
+    )
+
+    area = MultiSelectField(
+        max_length=40, 
+        max_choices=10,
+        choices= AREA_CHOICES,
+        blank = True,
+        null = True,
+        default=  ["CET", "CB", "CSA", "E", "LLA", "CH",]
+    )
+
+    tema = models.CharField(
+        blank = True,
+        null = True,
+        max_length=45,
+        default= 'All'
+    )
+    #instancio a data de criação no momento em que o objeto é criado
 
