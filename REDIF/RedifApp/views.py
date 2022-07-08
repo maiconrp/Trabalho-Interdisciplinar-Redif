@@ -23,7 +23,6 @@ def filtrar(form):
 
     if titulo: redacoes = redacoes.filter(titulo__icontains=  titulo) 
     if area: redacoes = redacoes.exclude(area__icontains = area)
-    print("area:", area, '\n', redacoes)
     if tema: redacoes = redacoes.filter(tema__icontains = tema) 
 
     return redacoes
@@ -49,7 +48,6 @@ def listarRedacao(request):
     }
     return render(request,"redacao/listar.html", context)
 
-    return render(request,'redacao/listar.html', context)
 
 
 @login_required
@@ -71,7 +69,7 @@ def criarRedacao(request):
         nova_redacao.data_criacao = datetime.now()
         nova_redacao.fk_autor = User.objects.get(pk=user)
         nova_redacao.save()
-        return redirect("/redif/listar")
+        return redirect("/redif/listar/")
         
     context = {
             'form' : form,
