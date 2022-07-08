@@ -1,49 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
 {%load bootstrap%}
 {% load static %}
-
-<header style="background: #ffffff;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    
+<header>
 	<nav class="navbar navbar-expand-lg navigation" id="navbar">
-		<div class="container align-items-center">
-			<a class="navbar-brand" href="\redif\home">
-				<img src="{% static 'images/logo.svg' %}" alt="" class="img-fluid" style="width: 7.5rem; height:auto">
-			</a>
-			<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain"
-				aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="icofont-navigation-menu"></span>
-			</button>
+		<div class="container">
 
-			<div class="collapse navbar-collapse" id="navbarmain">
-
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="#Pagina de Dicas">Quem Somos</a></li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Redações<i
-								class="icofont-thin-down"></i></a>
-						<ul class="dropdown-menu" aria-labelledby="dropdown02">
-							<li><a class="dropdown-item" href="/redif/criar">Enviar</a></li>
-							<li><a class="dropdown-item" href="/redif">Buscar</a></li>
-						</ul>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#Pagina de Dicas">Blog</a></li>
-
-					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conta<i
-								class="icofont-thin-down"></i></a>
-						<ul class="dropdown-menu" aria-labelledby="dropdown02">
-							<li><a class="dropdown-item" href="/accounts/login">Entre</a></li>
-							<li><a class="dropdown-item" href="/accounts/registrar">Cadastre-se</a></li>
-						</ul>
-					</li>
-					{%if user%}
-					<li class="nav-item"><a class="nav-link" href="contact.html">{{user}}</a></li>
-					{%endif%}
-
-				</ul>
-			</div>
+		  	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="icofont-navigation-menu"></span>
+		  </button>
+	  
+		  <div class="collapse navbar-collapse" id="navbarmain">
+			<ul class="navbar-nav ml-left">
+				<li class="nav-item active">
+					<img src="{% static 'images/logo.svg' %}" width="117px" height="60px" alt="">
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+			  <li class="nav-item active">
+				<a class="nav-link" href="/redif/home/">Tela inicial</a>
+			  </li>
+			   <li class="nav-item"><a class="nav-link" href="/redif/listar/">Redações</a></li>
+			   <li class="nav-item"><a class="nav-link" href="">Dicas de Estudos</a></li>
+			   {% if not Usuario%}
+			   <li class="nav-item"><a class="nav-link" href="/accounts/login/">Entrar</a></li>
+			   <li class="nav-item bg-primary "><a class="nav-link text-white" href="/accounts/registrar/">Cadastrar</a></li>
+						
+				{% endif %}
+				{% if Usuario%}
+			  	<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="{% static 'doctor.html' %}" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conta <i class="icofont-thin-down"></i></a>
+					<ul class="dropdown-menu" aria-labelledby="dropdown03">
+						
+						<li><a class="dropdown-item" href="/redif/perfil/{{ Usuario.username }}"><img src="{% static 'img/registration/user.svg' %}" width="20px" height="15px" alt=""> {{ Usuario.username}}</a></li>
+						<li><a class="dropdown-item" href="/accounts/logout/">Sair</a></li>
+						
+					</ul>
+			  	</li>
+				{% endif %}		
+			</ul>
+		  </div>
 		</div>
 	</nav>
 </header>
+</body>
+</html>

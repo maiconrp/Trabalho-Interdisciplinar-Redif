@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
@@ -76,7 +77,7 @@ def criarRedacao(request):
             'Usuario' : usuario(request),
     }
 
-    return render(request, 'redacao/detalhar.html', context=context)
+    return HttpResponse('404')
 
 
 def detalharRedacao(request, id):
@@ -130,7 +131,7 @@ def usuario(request):
     if User.is_authenticated:
         try: 
             Usuario = request.user.id
-            Usuario = User.objects.get(pk=Usuario)
+            Usuario = Usuario.objects.get(pk=Usuario)
         except: pass
     
     return Usuario
