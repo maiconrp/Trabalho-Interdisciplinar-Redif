@@ -8,6 +8,18 @@ from accounts.models import Usuario
 from . import filtros
 
 
+def perfilUsuario(request, usuario):
+    perfil = Usuario.objects.filter(username = usuario)
+    Redacoes = Redacao.objects.filter(fk_autor= perfil[0])
+    context = {
+        'Redacao': list(Redacoes),
+        'Perfil' : perfil[0],
+        'Usuario' : usuario(request),
+    }
+    
+    return render(request,'redacao/perfil-usuario.html', context)
+
+
 def usuario(request):
     user = False
     if Usuario.is_authenticated:
