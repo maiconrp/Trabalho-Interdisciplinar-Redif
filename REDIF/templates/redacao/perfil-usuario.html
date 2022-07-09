@@ -1,0 +1,84 @@
+
+{% extends '-index.html' %}
+{% load static %}
+
+{% block title %}Redacoes {{ Perfil.username}}{%endblock%}
+
+{%load static%}
+{% block content %}
+<div class="row">
+    <div>
+            <p>Usuario : {{ Perfil.username}}</p>
+            <p>email : {{ Perfil.email}}</p>
+            <p>titulacao : {{ Perfil.titulacao}}</p>
+            <p>condicao : {{ Perfil.condicao}}</p>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                {% if Perfil.id == Usuario.id %}
+                <h4 class="card-title">Suas redações: </h1>
+                {% else%}
+                <h4 class="card-title">Redações de {{Perfil.username}}: </h1>
+                {%endif%}
+        
+                {% if Redacao %}
+                {% for r in Redacao %}
+                <div class="feature-item mb-5 mb-lg-0">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="feature-icon mb-4"><i class="icofont-file-text"></i>
+                            <a href="/redif/detalhar/{{ r.id }}"><h4 class="mb-3">"{{r.titulo}}"</h4></a></div>
+                        
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    {% if r.fk_autor.id == Usuario.id%}
+                                    <a href="/redif/deletar/{{ r.id }}">
+                                        <button type="button" class="btn mb-1 btn-danger">
+                                            <i class="icofont-bin"></i><span class="btn-icon-right"></span>
+                                        </button>
+                                    </a>
+                                    <a href="/redif/editar/{{ r.id }}">
+                                        <button type="button" class="btn mb-1 btn-primary">
+                                            <span class="btn-icon-right"> <i class="icofont-edit"></i></span>
+                                        </button>
+                                    </a>
+                                    {% endif %}
+                                    <a href="/redif/detalhar/{{ r.id }}">
+                                        <button type="button" class="btn mb-1 btn-primary">
+                                            <span class="btn-icon-right"> <i class="icofont-external-link"></i></i></span>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </div>
+                <br>
+                {% endfor %}
+        
+                {% else %}
+                    {% if Perfil.id == Usuario.id %}
+                        <p>Não há redações, clique em compartilhar redações para adicioná-las</p>
+                    {% else %}
+                        <p>Não há redações</p>
+                    {% endif %}
+                {% endif %}
+
+                {% if Perfil.id == Usuario.id %}
+                <div class="text-right mr-3">
+                    <a href="/redif/criar/">
+                        <button type="button" class="btn mb-1 btn-primary">
+                            Compartilhar redação <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                        </button>
+                    </a>
+                </div>
+                {% endif %}
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
