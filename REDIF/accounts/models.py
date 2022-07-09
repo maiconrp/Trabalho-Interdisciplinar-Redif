@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from multiselectfield import MultiSelectField
 # Create your models here.   
 
 #Crio classe Usuário e faço herdar de User, restando apenas adcionar os campos especificos
@@ -37,14 +36,3 @@ class Usuario(User):
         null = False,
     )
 
-
-# SCHOOLING_CHOICES = [('f','Fundamental'),('em','Ensino médio'),('g','Graduado'), 
-#                 ('pg','Pós-Graduado'), ('m','Mestre'), ('d','Doutor')]
-
-
-# schooling = models.CharField(
-#         max_length=200, 
-#         choices=SCHOOLING_CHOICES,
-#         blank= True,
-#         null= True,
-#     )
