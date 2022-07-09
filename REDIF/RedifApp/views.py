@@ -1,26 +1,18 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponseRedirect, render
 
-from RedifApp.forms import RedacaoForm, AvaliacaoForm
-
-#importo a classe usuário
+from RedifApp.forms import RedacaoForm, AvaliacaoForm, FiltroForm
 from RedifApp.models import Redacao, Usuario
+from . import filtros
 
 
-#ainda falta mesclar com algumas alterações da views da master
-
-#O que antes era classe "User", passa a ser "Usuario"
-
-#melhor coisa essa funçãokkkkkkkk salvou
 def usuario(request):
     user = False
     if Usuario.is_authenticated:
         try: 
             user = request.user.id
             user = Usuario.objects.get(pk=user)
-        except: 
-            pass
-
+        except: pass
     return user
 
 #-------------------------------------------------
@@ -34,16 +26,16 @@ def home(request):
 #-------------------------------------------------
 
 def listarRedacao(request):
-    Redacoes = Redacao.objects.all()
+    form = FiltroForm(request.POST)
+
+    Redacoes = filtros.filtrar(form)
 
     context = {
-        "Redacao" : Redacoes,
+        "Redacao": Redacoes,
         'Usuario' : usuario(request),
-        }
-
+        'form' : form,
+    }
     return render(request,"redacao/listar.html", context)
-
-#-------------------------------------------------
 
 @login_required
 def criarRedacao(request):
@@ -59,16 +51,16 @@ def criarRedacao(request):
             context = {
                 'form'    : form,
                 'Usuario' : usuario(request)
-                }
-
+            }
             return HttpResponseRedirect("/redif")
-    else:
-        form = RedacaoForm()
+    
+    else:form = RedacaoForm()
 
     context = {
         'form'    : form,
         'Usuario' : usuario(request),
     }
+    
     return render(request, 'redacao/criar.html', context)
     
 #-------------------------------------------------

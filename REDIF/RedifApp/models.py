@@ -1,9 +1,9 @@
 import datetime
 from tkinter import ALL
 from django.db import models
-from django.contrib.auth.models import User
 from accounts.models import Usuario
-#adicionado la no settings.py
+from django.core.validators import MinValueValidator, MaxValueValidator
+
 
 from multiselectfield import MultiSelectField
 # Create your models here.   
@@ -74,7 +74,6 @@ class Redacao(models.Model):
         through="Avaliacao"
     )
 
-#conclui
 class Avaliacao(models.Model):
     usuario = models.ForeignKey(
         Usuario,
@@ -89,7 +88,12 @@ class Avaliacao(models.Model):
     comentario = models.TextField(
         max_length=300, 
     )
-    nota = models.SmallIntegerField(max_length=1000)
+    nota = models.SmallIntegerField(
+        validators=[
+            MaxValueValidator(1000),
+            MinValueValidator(0)
+        ]
+    )
 
     data_criacao = models.DateTimeField(
         default=datetime.date.today
