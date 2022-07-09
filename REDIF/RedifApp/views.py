@@ -23,10 +23,16 @@ def filtrar(form):
     tema = form.cleaned_data['tema']
 
     if titulo: redacoes = redacoes.filter(titulo__icontains=  titulo) 
-    if area: redacoes = redacoes.filter(area__in = area)
     if tema: redacoes = redacoes.filter(tema__icontains = tema) 
 
-    return redacoes
+    if not area: return redacoes
+
+    lista = []
+    for item in list(redacoes):
+        for x in list(item.area):
+            if x in list(area): 
+                lista.append(item)
+    return lista
 
 #-------------------------------------------------
 
