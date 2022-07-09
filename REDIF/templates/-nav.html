@@ -15,7 +15,7 @@
 			<div class="collapse navbar-collapse" id="navbarmain">
 
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="#Pagina de Dicas">Quem Somos</a></li>
+					<li class="nav-item"><a class="nav-link" href="#footer">Quem Somos</a></li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Redações<i
@@ -27,20 +27,36 @@
 					</li>
 					<li class="nav-item"><a class="nav-link" href="#Pagina de Dicas">Blog</a></li>
 
-					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+					<li class="nav-item"><a class="nav-link" href="https://docs.google.com/document/d/1zSjQhVjvV4H418FqEAB1fpZLyEhNMom0jfDqtOzfCrk/edit?usp=sharing">Documentação</a></li>
 
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conta<i
+						{%if Usuario.is_authenticated%}
+						<a class="nav-link dropdown-toggle" href="department.html" href="department.html" id="dropdown02"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user}}<i
 								class="icofont-thin-down"></i></a>
-						<ul class="dropdown-menu" aria-labelledby="dropdown02">
-							<li><a class="dropdown-item" href="/accounts/login">Entre</a></li>
-							<li><a class="dropdown-item" href="/accounts/registrar">Cadastre-se</a></li>
-						</ul>
+							<ul class="dropdown-menu row" aria-labelledby="dropdown02">
+							
+								<li><a class="dropdown-item col" href="/accounts/logout">Sair</a></li>	
+							</ul>
+						{%endif%}
+						{%if not Usuario.is_authenticated%}
+							<a class="nav-link dropdown-toggle" href="department.html" href="department.html" id="dropdown02"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contas<i
+									class="icofont-thin-down"></i></a>
+							<ul class="dropdown-menu" aria-labelledby="dropdown02">
+								<li><a class="dropdown-item" href="/accounts/login">Entre</a></li>
+								<li><a class="dropdown-item" href="/accounts/registrar">Cadastre-se</a></li>
+								
+							</ul>
+
+						{%endif%}
+
+						
 					</li>
-					{%if user%}
-					<li class="nav-item"><a class="nav-link" href="contact.html">{{user}}</a></li>
-					{%endif%}
+					
+					
+					
+
 
 				</ul>
 			</div>

@@ -1,6 +1,6 @@
 {% load static %}
 {%load bootstrap%}
-<footer class="footer section gray-bg">
+<footer class="footer section gray-bg" id="footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-4 mr-auto col-sm-6">
@@ -8,68 +8,60 @@
 					<div class="logo mb-4">
 						<img src="{% static 'images/logo.svg' %}" alt="" class="img-fluid" style="width: 10rem; height:auto">
 					</div>
-					<p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p>
+					<p>Desenvolvida com o intuito de auxiliar aqueles que buscam uma melhor capacidade textual</p>
 
 					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https//www.facebook.com/themefisher"><i class="icofont-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="https//twitter.com/themefisher"><i class="icofont-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https//www.pinterest.com/themefisher/"><i class="icofont-linkedin"></i></a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-2 col-md-6 col-sm-6">
-				<div class="widget mb-5 mb-lg-0">
-					<h4 class="text-capitalize mb-3">Department</h4>
-					<div class="divider mb-4"></div>
-
-					<ul class="list-unstyled footer-menu lh-35">
-						<li><a href="{% static '#' %}">Surgery </a></li>
-						<li><a href="{% static '#' %}">Wome's Health</a></li>
-						<li><a href="{% static '#' %}">Radiology</a></li>
-						<li><a href="{% static '#' %}">Cardioc</a></li>
-						<li><a href="{% static '#' %}">Medicine</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-2 col-md-6 col-sm-6">
-				<div class="widget mb-5 mb-lg-0">
-					<h4 class="text-capitalize mb-3">Support</h4>
-					<div class="divider mb-4"></div>
-
-					<ul class="list-unstyled footer-menu lh-35">
-						<li><a href="{% static '#' %}">Terms & Conditions</a></li>
-						<li><a href="{% static '#' %}">Privacy Policy</a></li>
-						<li><a href="{% static '#' %}">Company Support </a></li>
-						<li><a href="{% static '#' %}">FAQuestions</a></li>
-						<li><a href="{% static '#' %}">Company Licence</a></li>
+						<li class="list-inline-item">
+							<a href="https://github.com/maicon15rp/Trabalho-Interdisciplinar-Redif/tree/master/REDIF" 
+								blank  onMouseOver="this.style.background='#686969'" onMouseOut="this.style.background='#adb5bd'">
+								<i class="icofont-github"></i>
+							</a>
+						</li>
+						<li class="list-inline-item">
+							<a href="https://www.ifbaiano.edu.br/unidades/guanambi/" 
+								blank  onMouseOver="this.style.background='#198754'" onMouseOut="this.style.background='#adb5bd'">
+								<i class="icofont-institution"></i>
+							</a>
+						</li>
+						<li class="list-inline-item">
+							<a href="https://docs.google.com/document/d/1zSjQhVjvV4H418FqEAB1fpZLyEhNMom0jfDqtOzfCrk/edit?usp=sharing" 
+								blank  onMouseOver="this.style.background='#0d6efd'" onMouseOut="this.style.background='#adb5bd'">
+								<i class="icofont-file-alt"></i>
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>
 
 			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="widget widget-contact mb-5 mb-lg-0">
-					<h4 class="text-capitalize mb-3">Get in Touch</h4>
+				<div class="widget mb-5 mb-lg-0">
+					<h4 class="text-capitalize mb-3">Department</h4>
 					<div class="divider mb-4"></div>
 
-					<div class="footer-contact-block mb-4">
-						<div class="icon d-flex align-items-center">
-							<i class="icofont-email mr-3"></i>
-							<span class="h6 mb-0">Support Available for 24/7</span>
-						</div>
-						<h4 class="mt-2"><a href="tel:+23-345-67890">Support@email.com</a></h4>
-					</div>
-
-					<div class="footer-contact-block">
-						<div class="icon d-flex align-items-center">
-							<i class="icofont-support mr-3"></i>
-							<span class="h6 mb-0">Mon to Fri : 08:30 - 18:00</span>
-						</div>
-						<h4 class="mt-2"><a href="tel:+23-345-67890">+23-456-6588</a></h4>
-					</div>
+					<ul class="list-unstyled footer-menu lh-35">
+						<li><a href="{% static '#' %}">Home </a></li>
+						<li><a href="{% static '#' %}">Redações</a></li>
+						<li><a href="{% static '#' %}">Documentação</a></li>
+						<li><a href="{% static '#' %}">Conta</a></li>
+					</ul>
 				</div>
 			</div>
+
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="widget mb-5 mb-lg-0">
+					<h4 class="text-capitalize mb-3">Desenvolvido por:</h4>
+					<div class="divider mb-4"></div>
+
+					<ul class="list-unstyled footer-menu lh-35">
+						<li><a href="{% static '#' %}">Enzo Afonso</a></li>
+						<li><a href="{% static '#' %}">Jader Adriel</a></li>
+						<li><a href="{% static '#' %}">Maicon Robert</a></li>
+						<li><a href="{% static '#' %}">Reinaldo Soares </a></li>
+					</ul>
+				</div>
+			</div>
+
+		
 		</div>
 		
 		

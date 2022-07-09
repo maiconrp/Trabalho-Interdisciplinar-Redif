@@ -89,6 +89,40 @@
 
 	<!-- Section Blog -->
 	<section class="section about">
+		<style> 
+			.img-fluid, .feature-item{
+				animation: 1s;
+				transition: all 0.3s ease-in-out;
+			}
+			.img-fluid:hover, .feature-item:hover {
+				transform : scale(1.05, 1.05)
+			}			
+			.counter-stat{
+				box-shadow: 0px 0px 36px 0px hsba(216, 100%, 42%, 0.1);
+				animation: 1s;
+				transition: all 0.3s ease-in-out;
+				color:#e12454;
+			}
+			.counter-stat:hover {
+				transform: skewX(20deg);
+				transform : scale(1.1, 1.1);
+				background: #e12454;
+				color:whitesmoke;
+				animation: mymove 1s;
+				animation-iteration-count: 2;
+  				animation-direction: alternate;
+			}
+			.icon{
+				box-shadow: 0px 0px 36px 0px hsba(216, 100%, 42%, 0.1);				
+				color: rgb(196, 181, 181);
+			}
+
+			@keyframes mymove {
+  			from {bottom: 0%;}
+  			to {bottom: 15%;}
+			}
+			
+		</style> 
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-4 col-sm-6">
@@ -98,13 +132,14 @@
 					</div>
 				</div>
 				<div class="col-lg-4 col-sm-6">
-					<div class="about-img mt-4 mt-lg-0">
+					<div class="about-img mt-4 mt-lg-0" 
+							onMouseOver=myFunction() onMouseOut="this.style.background='#adb5bd'">
 						<img src="{% static 'images/about/img-3.jpg' %}" alt="" class="img-fluid">
 					</div>
 				</div>
 				<div class="col-lg-4">
 					<div class="about-content pl-4 mt-4 mt-lg-0" id="Pagina de Dicas">
-						<h2 class="title-color">Problemas em<br>escrever uma redação?</h2>
+						<h2 class="title-color fs-1">Problemas em<br>escrever uma redação?</h2>
 						<p class="mt-2 mb-2"><em>Nosso blog de dicas torna tudo mais fácil</em></p>
 						<a href="blog-sidebar.html" class="btn btn-main-2 btn-round-full btn-icon">Visitar<i
 								class="icofont-simple-right ml-3"></i></a>
@@ -117,34 +152,30 @@
 	<!-- Section CTA -->
 	<section class="cta-section ">
 		<div class="container">
-			<div class="cta position-relative">
-				<div class="row">
-					<div class="col-lg-3 col-md-6 col-sm-6">
-						<div class="counter-stat">
-							<i class="icofont-speed"></i>
-							<span class="h3">58</span>k
-							<p>COMPARTILHE</p>
+			<div class="cta position-relative ">
+				<div class="row text-white">
+					<div class="col-lg-3 col-md-6 col-sm-6 ">
+						<div class="counter-stat text-danger">
+							<i class="icofont-share icon"></i>
+							<p class="text.danger">COMPARTILHE</p>
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-6 col-sm-6">
 						<div class="counter-stat">
-							<i class="icofont-flag"></i>
-							<span class="h3">700</span>+
+							<i class="icofont-star icon"></i>
 							<p>AVALIE</p>
 						</div>
 					</div>
-
+					
 					<div class="col-lg-3 col-md-6 col-sm-6">
 						<div class="counter-stat">
-							<i class="icofont-computer"></i>
-							<span class="h3">40</span>+
+							<i class="icofont-airplane-alt icon"></i>
 							<p>INSPIRE-SE</p>
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-6 col-sm-6">
 						<div class="counter-stat">
-							<i class="icofont-globe"></i>
-							<span class="h3">20</span>
+							<i class="icofont-chart-histogram icon"></i>
 							<p>EVOLUA</p>
 						</div>
 					</div>
@@ -152,7 +183,6 @@
 			</div>
 		</div>
 	</section>
-
 	<!-- Section AREA -->
 	<section class="section service gray-bg">
 		<div class="container">
@@ -167,12 +197,13 @@
 				</div>
 			</div>
 			<!-- AREAS -->
-			<div class="row justify-content-center">
-				<div class="col-lg-4 col-md-6 col-sm-6">
-					<div class="service-item mb-4">
+			<div class="row justify-content-center ">
+				<!-- Ciências Exatas e da Terra -->
+				<div class="col-lg-4 col-md-6 col-sm-6" >
+					<div class="service-item mb-4" style="height: 16rem;">
 						<div class="icon d-flex align-items-center">
 							<i class="icofont-laboratory text-lg"></i>
-							<h4 class="mt-3 mb-3">Ciencias</h4>
+							<h4 class="mt-3 mb-3">Ciências Exatas e da Terra</h4>
 						</div>
 
 						<div class="content">
@@ -180,36 +211,36 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="col-lg-4 col-md-6 col-sm-6">
-					<div class="service-item mb-4">
+				<!-- Ciências Biológicas -->
+				<div class="col-lg-4 col-md-6 col-sm-6" >
+					<div class="service-item mb-4" style="height: 16rem;">
 						<div class="icon d-flex align-items-center">
 							<i class="icofont-heart-beat-alt text-lg"></i>
-							<h4 class="mt-3 mb-3">Filosofia</h4>
+							<h4 class="mt-3 mb-3">Ciências Biológicas</h4>
 						</div>
 						<div class="content">
 							<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-lg-4 col-md-6 col-sm-6">
-					<div class="service-item mb-4">
+				<!-- Engenharias -->
+				<div class="col-lg-4 col-md-6 col-sm-6" >
+					<div class="service-item mb-4" style="height: 16rem;">
 						<div class="icon d-flex align-items-center">
 							<i class="icofont-tooth text-lg"></i>
-							<h4 class="mt-3 mb-3">Política</h4>
+							<h4 class="mt-3 mb-3">Engenharias</h4>
 						</div>
 						<div class="content">
 							<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-lg-4 col-md-6 col-sm-6">
-					<div class="service-item mb-4">
+				<!-- Ciências da Saúde -->
+				<div class="col-lg-4 col-md-6 col-sm-6" >
+					<div class="service-item mb-4" style="height: 16rem;">
 						<div class="icon d-flex align-items-center">
 							<i class="icofont-crutch text-lg"></i>
-							<h4 class="mt-3 mb-3">Economia</h4>
+							<h4 class="mt-3 mb-3">Ciências da Saúde</h4>
 						</div>
 
 						<div class="content">
@@ -217,247 +248,107 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="col-lg-4 col-md-6 col-sm-6">
-					<div class="service-item mb-4">
+				<!-- Ciências Agrárias -->
+				<div class="col-lg-4 col-md-6 col-sm-6" >
+					<div class="service-item mb-4" style="height: 16rem;">
 						<div class="icon d-flex align-items-center">
 							<i class="icofont-brain-alt text-lg"></i>
-							<h4 class="mt-3 mb-3">Sociedade</h4>
+							<h4 class="mt-3 mb-3">Ciências Agrárias</h4>
 						</div>
 						<div class="content">
 							<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-lg-4 col-md-6 col-sm-6">
-					<div class="service-item mb-4">
+				<!-- Linguística, Letras e Artes -->
+				<div class="col-lg-4 col-md-6 col-sm-6" >
+					<div class="service-item mb-4" style="height: 16rem;">
 						<div class="icon d-flex align-items-center">
 							<i class="icofont-dna-alt-1 text-lg"></i>
-							<h4 class="mt-3 mb-3">Meio ambiente</h4>
+							<h4 class="mt-3 mb-3">Linguística, Letras e Artes</h4>
 						</div>
 						<div class="content">
 							<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
 						</div>
 					</div>
 				</div>
-				<div class="btn-container ">
-					<a href="redif/" class="btn btn-main-2 btn-icon btn-round-full">Ver mais</a>
+				<div class="btn">
+					<a href="/redif/" class="btn btn-main-2 btn-icon btn-round-full">Ver mais</a>
 				</div>
 			</div>
-		</div>
-		
-	</section>
-	<!-- Section COMENTÁRIOS -->
-	<section class="section testimonial-2 gray-bg">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-7">
-					<div class="section-title text-center">
-						<h2>We served over 5000+ Patients</h2>
-						<div class="divider mx-auto my-4"></div>
-						<p>Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates incidunt
-							molestias nostrum laudantium. Maiores porro cumque quaerat.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-12 testimonial-wrap-2">
-					<div class="testimonial-block style-2  gray-bg">
-						<i class="icofont-quote-right"></i>
-
-						<div class="testimonial-thumb">
-							<img src="{% static 'images/team/test-thumb1.jpg' %}" alt="" class="img-fluid">
-						</div>
-
-						<div class="client-info ">
-							<h4>Amazing service!</h4>
-							<span>John Partho</span>
-							<p>
-								They provide great service facilty consectetur adipisicing elit. Itaque rem,
-								praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
-							</p>
-						</div>
-					</div>
-
-					<div class="testimonial-block style-2  gray-bg">
-						<div class="testimonial-thumb">
-							<img src="{% static 'images/team/test-thumb2.jpg' %}" alt="" class="img-fluid">
-						</div>
-
-						<div class="client-info">
-							<h4>Expert doctors!</h4>
-							<span>Mullar Sarth</span>
-							<p>
-								They provide great service facilty consectetur adipisicing elit. Itaque rem,
-								praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
-							</p>
-						</div>
-
-						<i class="icofont-quote-right"></i>
-					</div>
-
-					<div class="testimonial-block style-2  gray-bg">
-						<div class="testimonial-thumb">
-							<img src="{% static 'images/team/test-thumb3.jpg' %}" alt="" class="img-fluid">
-						</div>
-
-						<div class="client-info">
-							<h4>Good Support!</h4>
-							<span>Kolis Mullar</span>
-							<p>
-								They provide great service facilty consectetur adipisicing elit. Itaque rem,
-								praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
-							</p>
-						</div>
-
-						<i class="icofont-quote-right"></i>
-					</div>
-
-					<div class="testimonial-block style-2  gray-bg">
-						<div class="testimonial-thumb">
-							<img src="{% static 'images/team/test-thumb4.jpg' %}" alt="" class="img-fluid">
-						</div>
-
-						<div class="client-info">
-							<h4>Nice Environment!</h4>
-							<span>Partho Sarothi</span>
-							<p class="mt-4">
-								They provide great service facilty consectetur adipisicing elit. Itaque rem,
-								praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
-							</p>
-						</div>
-						<i class="icofont-quote-right"></i>
-					</div>
-
-					<div class="testimonial-block style-2  gray-bg">
-						<div class="testimonial-thumb">
-							<img src="{% static 'images/team/test-thumb1.jpg' %}" alt="" class="img-fluid">
-						</div>
-
-						<div class="client-info">
-							<h4>Modern Service!</h4>
-							<span>Kolis Mullar</span>
-							<p>
-								They provide great service facilty consectetur adipisicing elit. Itaque rem,
-								praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
-							</p>
-						</div>
-						<i class="icofont-quote-right"></i>
-					</div>
-				</div>
-			</div>
-		</div>
+		</div>	
 	</section>
 
-	<!-- footer Start -->
-	<footer class="footer section gray-bg">
+	<!-- Section Vender o peixe -->
+	<section class="section testimonial">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4 mr-auto col-sm-6">
-					<div class="widget mb-5 mb-lg-0">
-						<div class="logo mb-4">
-
-						</div>
-						<p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur
-							veritatis eveniet distinctio possimus.</p>
-
-						<ul class="list-inline footer-socials mt-4">
-							<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i
-										class="icofont-facebook"></i></a></li>
-							<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i
-										class="icofont-twitter"></i></a></li>
-							<li class="list-inline-item"><a href="https://www.pinterest.com/themefisher/"><i
-										class="icofont-linkedin"></i></a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-lg-2 col-md-6 col-sm-6">
-					<div class="widget mb-5 mb-lg-0">
-						<h4 class="text-capitalize mb-3">Department</h4>
-						<div class="divider mb-4"></div>
-
-						<ul class="list-unstyled footer-menu lh-35">
-							<li><a href="#">Surgery </a></li>
-							<li><a href="#">Wome's Health</a></li>
-							<li><a href="#">Radiology</a></li>
-							<li><a href="#">Cardioc</a></li>
-							<li><a href="#">Medicine</a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-lg-2 col-md-6 col-sm-6">
-					<div class="widget mb-5 mb-lg-0">
-						<h4 class="text-capitalize mb-3">Support</h4>
-						<div class="divider mb-4"></div>
-
-						<ul class="list-unstyled footer-menu lh-35">
-							<li><a href="#">Terms & Conditions</a></li>
-							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Company Support </a></li>
-							<li><a href="#">FAQuestions</a></li>
-							<li><a href="#">Company Licence</a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="widget widget-contact mb-5 mb-lg-0">
-						<h4 class="text-capitalize mb-3">Get in Touch</h4>
-						<div class="divider mb-4"></div>
-
-						<div class="footer-contact-block mb-4">
-							<div class="icon d-flex align-items-center">
-								<i class="icofont-email mr-3"></i>
-								<span class="h6 mb-0">Support Available for 24/7</span>
-							</div>
-							<h4 class="mt-2"><a href="tel:+23-345-67890">Support@email.com</a></h4>
-						</div>
-
-						<div class="footer-contact-block">
-							<div class="icon d-flex align-items-center">
-								<i class="icofont-support mr-3"></i>
-								<span class="h6 mb-0">Mon to Fri : 08:30 - 18:00</span>
-							</div>
-							<h4 class="mt-2"><a href="tel:+23-345-67890">+23-456-6588</a></h4>
-						</div>
+				<div class="col-lg-6 offset-lg-6">
+					<div class="section-title">
+						<h2 class="mb-4">Por que usar a plataforma Redif?</h2>
+						<div class="divider my-2"></div>
 					</div>
 				</div>
 			</div>
+			<div class="row align-items-center">
+				<div class="col-lg-6 testimonial-wrap offset-lg-6">
+					<div class="testimonial-block" style="height: 12rem;">
+						<div class="client-info ">
+							<h4>Pratique</h4>
+							<div class="divider mx-auto my-1 "></div>
 
-			<div class="footer-btm py-4 mt-5">
-				<div class="row align-items-center justify-content-between">
-					<div class="col-lg-6">
-						<div class="copyright">
-							&copy; Copyright Reserved to <span class="text-color">Novena</span> by <a
-								href="https://themefisher.com/" target="_blank">Themefisher</a>
 						</div>
+						<p>
+							A pratica leva a perfeição. Redif é a sua aliada para treinar e aprender, te ajudando a ter um constante desenvolvimento
+						</p>
+						<i class="icofont-quote-right"></i>
+						
 					</div>
-					<div class="col-lg-6">
-						<div class="subscribe-form text-lg-right mt-5 mt-lg-0">
-							<form action="#" class="subscribe">
-								<input type="text" class="form-control" placeholder="Your Email address">
-								<a href="#" class="btn btn-main-2 btn-round-full">Subscribe</a>
-							</form>
-						</div>
-					</div>
-				</div>
+					<div class="testimonial-block" style="height: 12rem;">
+						<div class="client-info ">
+							<h4>Envie suas Redações</h4>
+							<div class="divider mx-auto my-1 "></div>
 
-				<div class="row">
-					<div class="col-lg-4">
-						<a class="backtop js-scroll-trigger" href="#top">
-							<i class="icofont-long-arrow-up"></i>
-						</a>
+						</div>
+						<p>
+							Receba avaliações e comentários que possibilitem compreender e eliminar possíveis erros
+
+						</p>
+						<i class="icofont-quote-right"></i>
+						
 					</div>
+					<div class="testimonial-block" style="height: 12rem;">
+						<div class="client-info ">
+							<h4>Plataforma Colaborativa</h4>
+							<div class="divider mx-auto my-1 "></div>
+
+						</div>
+						<p>
+							Receba avaliações e comentários de outros usuarios e consiga compreender e eliminar possíveis erros
+
+						</p>
+						<i class="icofont-quote-right"></i>
+						
+					</div>
+					<div class="testimonial-block" style="height: 12rem;">
+						<div class="client-info ">
+							<h4>Desenvolva seu olhar crítico</h4>
+							<div class="divider mx-auto my-1 "></div>
+
+						</div>
+						<p>
+							Visando uma relação reciproca, nossa plataforma te possibilita ler e avaliar outras redações, melhorando assim, sua comprensão 
+</p>
+						<i class="icofont-quote-right"></i>
+						
+					</div>
+					
 				</div>
 			</div>
 		</div>
-	</footer>
+	</section>
+	<!-- footer Start -->
+	{%include '-footer.html'%}
 
 
 

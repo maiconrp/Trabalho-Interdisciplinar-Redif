@@ -3,35 +3,35 @@
 {%load static%}
 {% block content %}
 
-<div class="container-fluid col-9" >
-    <div class="feature-item row justify-content-center align-middle bg-danger"  style="height: auto;">
+<div class="container-fluid col-9">
+    <div class="feature-item row justify-content-center align-middle bg-danger" style="height: auto;">
         <div class="col-9">
             <h3 class="text-white justify-content-center">
                 {{Redacao.titulo}}
             </h3>
         </div>
-        
-        {% if Redacao.fk_autor.id == Usuario.id%}
-        
-        <div class="col-3 align-middle">
-            <div class="row justify-content-center gap-1"  style="height: 0.5rem;">
 
-        <a href="/redif/deletar/{{ Redacao.id }}" class="me-3">
-            <button type="button" class="btn mb-1 btn-light text-danger">
-                <i class="icofont-bin"></i><span class="btn-icon-right"></span>
-            </button>
-        </a>
-        
-        <a href="/redif/editar/{{ Redacao.id }}">
-            <button type="button" class="btn mb-1 btn-light">
-                <span class="btn-icon-right"> <i class="icofont-edit text-secondary"></i></span>
-            </button>
-        </a>
+        {% if Redacao.fk_autor.id == Usuario.id%}
+
+        <div class="col-3 align-middle">
+            <div class="row justify-content-center gap-1" style="height: 0.5rem;">
+
+                <a href="/redif/deletar/{{ Redacao.id }}" class="me-3">
+                    <button type="button" class="btn mb-1 btn-light text-danger">
+                        <i class="icofont-bin"></i><span class="btn-icon-right"></span>
+                    </button>
+                </a>
+
+                <a href="/redif/editar/{{ Redacao.id }}">
+                    <button type="button" class="btn mb-1 btn-light">
+                        <span class="btn-icon-right"> <i class="icofont-edit text-secondary"></i></span>
+                    </button>
+                </a>
+            </div>
+        </div>
     </div>
+    {% endif %}
 </div>
-    </div>
-        {% endif %}
-    </div>
 </div>
 <br>
 
@@ -51,141 +51,153 @@
                             <h4 class="fw-bold">
                                 {{Redacao.fk_autor.username}}
                             </h4>
-                            <small class="">Postado em {{Redacao.data_criacao}}</small>
+                            <small class="Data de postagem">Postado em {{Redacao.data_criacao}}</small>
                         </div>
-                          </div>
-                          <a class="badge bg-light text-decoration-none link-red" href="#!">{{Redacao.area}}</a>
-                          <a class="badge bg-ligth text-decoration-none link-red" href="#!">{{Redacao.tema}}</a>
+                    </div>
+
 
                     <div class="divider mb-3"></div>
                     <h1 class="mb-3 mt-3"></h1>
-
+                    <!-- Conteudo da Redação -->
                     <article class="Conteudo-Redacao" style="text-align: justify;">
                         <p class="" id="Introdução">
-                            Em “vidas secas”, obra literária de Graciliano Ramos, Fabiano e sua família vivem uma
-                            situação desgastante marcada principalmente pela miséria. No livro os filhos do protagonista
-                            não recebem nomes, sendo limitados a serem chamados de apenas “mais velho” e o “mais novo”
-                            recurso do autor para evidenciar a desumanização do individuo. Ao sairmos da literatura
-                            ainda sem desconsiderar o contexto histórico da obra podemos notar a problemática: a não
-                            garantia de cidadania pela invisibilidade da falta do registro civil, documento que garante
-                            acesso á cidadania no Brasil e previne a invisibilidade social. Nesse sentido, a ausência
-                            desse documento causa a marginalização da população e impede a evolução social dos
-                            brasileiros.
+                            {{Redacao.conteudo}}
                         </p>
                         <p class="" id="Desenvolvimento 1">
-                            É nítido a deficiência do registro civil repercute, sem duvida na persistente falta de
-                            pertencimento do cidadão brasileiro. Assim para que haja uma cidadania completa no Brasil é
-                            necessária a existência também dos direitos sociais, políticos e civil não garantido é
-                            possível fazer com que a cidadania seja alcançada.
+
                         </p>
                         <p class="" id="Desenvolvimento 2">
-                            A falta de cidadania na população reflete na manutenção de uma sociedade excluída. De acordo
-                            com a analise da antropóloga brasileira Lilia Schwarcz, desde a independência do Brasil, não
-                            há a formação de um ideal de coletividade. Com isso se mantem o caráter de exclusão social,
-                            sobre tudo as pessoas que não tiveram o registro oficial.
+
                         </p>
                         <p class="justify-content" id="Conclusão">
-                            Portanto fica claro que medidas são necessárias para eliminar a invisibilidade social
-                            provocada pela ausência de registos civis. Nesse sentido, é importante que os tribunais de
-                            justiça de todo o território nacional ampliem programas para percorrer as cidades
-                            brasileiras para garantir a documentação de nascimento da população. Assim, será possível
-                            garantir com que mais cidadãos tenham acesso plenos aos seus direitos e possam participar
-                            ativamente da sociedade.
+
                         </p>
                     </article>
-                
-        <div class="row justify-content-center align-items-center container-fluid">
-            <div class="col-8">Iae{{Redacao.Area}}|{{Redacao.tema}}</div>
-            <div class="row justify-content-center align-items-center">
-                <div class="col">10{{Redacao.numero_de_curtidas}}<a href=""><i class="icofont-heart ml-3"></i></a></div>
-                <div class="col">18{{Redacao.numero_de_curtidas}}<a href="" onclick="copiarTexto()" data-toggle="modal" data-target="#CompartilharRedacaoIcon"><i class="icofont-share ml-3"></i></a></div>
-                <div class="col">{{Redacao.Usuario_avaliacao.all.count}} <a href="#comentario"><i class="icofont-comment ml-3"></i></a></div>
+
+                    <div class="row justify-content-center align-items-center container-fluid">
+                        <div class="col-8">Iae{{Redacao.Area}}|{{Redacao.tema}}</div>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col">10{{Redacao.numero_de_curtidas}}<a href=""><i
+                                        class="icofont-heart ml-3"></i></a></div>
+                            <div class="col">18{{Redacao.numero_de_curtidas}}<a href="" onclick="copiarTexto()"
+                                    data-toggle="modal" data-target="#CompartilharRedacaoIcon"><i
+                                        class="icofont-share ml-3"></i></a></div>
+                            <div class="col">{{Redacao.Usuario_avaliacao.all.count}} <a href="#comentario"><i
+                                        class="icofont-comment ml-3"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget tags mb-1">
+
+                        {%for temaChave in Redacao.area.items%}
+                        <a class="badge bg-light text-decoration-red link-red" href="#!">{{temaChave}}</a>
+                        {%endfor%}
+                        <a class="badge bg-ligth text-decoration-red link-red" href="#!">{{Redacao.tema}}</a>
+                    </div>
+                </div>
+                <br>
+                <!-- Modal -->
+
+              
+                <div id="CompartilharRedacaoIcon" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close justify-content-start"
+                                    data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Compartilhar Redação</h4>
+                            </div>
+                            <div class="modal-body feature-item">
+                                <input clas="form-control col-12" type="text" name="texto" id="texto"
+                                    value="Veja essa redação incrivel de {{Usuario.username}}: {{request.build_absolute_uri}}"
+                                    readonly />
+                                <button type="button" class="btn btn-default" onclick="copiarTexto()">Copiar</button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-<br> 
-<!-- Modal -->
 
-<div id="CompartilharRedacaoIcon" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close justify-content-start" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Compartilhar Redação</h4>
-        </div>
-        <div class="modal-body">
-
-            <input clas="feature-item" type="text" name="texto" id="texto" value="Veja essa redação incrivel de maicow: {{request.build_absolute_uri}}" readonly/>
-            <button onclick="copiarTexto()">Copiar</button>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-</div>
-</div></div>
-
-</div>
-<br>
- <form action="/redif/detalhar/comentar/{{Redacao.id}}/" method="post" >
-    <div class="container-fluid 10 feature-item">
-    {% csrf_token %}
-    <div class="col-md-12">
-        <label for="comentario" class="form-label">Comentario</label>
-        <textarea class="form-control" id="comentario" name="comentario" required style="height: 10rem;"></textarea>
     </div>
     <br>
-    <div class="input-group mb-3 col-12 ">
-        <span class="input-group-text">Qual sua nota para esta redação?</span>
-        <input type="number" class="form-control" id="nota" name="nota" required style="height: 3rem;">
-        <input type="submit" class="btn btn-danger " value="Comentar" style="height: 3rem;">
+    <div class="col-lg-12 feature-item">
+        <form class="comment-form my-3 container-fluid " id="comment-form"
+            action="/redif/detalhar/comentar/{{Redacao.id}}/" method="post">
+            {% csrf_token %}
+            <h4 class="mb-4">Escreva um Comentário</h4>
+            {%if veriAutenti%}
+            <h4 class="mb-4">Faça login antes </h4>
+            {%endif%}
+            <div class="row ">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input class="form-control" value="Qual sua nota para esta redação?" readonly>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="nota" id="nota" placeholder="Nota:" required>
+                    </div>
+                </div>
+            </div>
+            <textarea class="form-control mb-4" name="comentario" id="comment" cols="30" rows="5"
+                placeholder="Comentario" required></textarea>
+
+            <input class="btn btn-main-2 btn-round-full" type="submit" name="submit-contact" id="submit_contact"
+                value="Comentar">
+        </form>
     </div>
-</div>  
-</form> 
 
-<br>
 
-<div class="container-fluid 10 feature-item " style="height: 8rem;">
+    <br>
+
+    <div class="container-fluid 10 feature-item " style="height: 8rem;">
         <div class="md-10">
             <h1>
                 Comentários
             </h1>
-           <div class="divider mb-3"></div>
+            <div class="divider mb-3"></div>
             <h1 class="mb-3 mt-3"></h1>
         </div>
         <!-- Comments section-->
 
-</div>
-<br>
-<div class=" row justify-content-end "> 
+    </div>
+    <br>
+    <div class=" row justify-content-end ">
+        {{Redacao.avaliacoes.all.count}}
         {%for x in Redacao.Usuario_avaliacao.all%}
-        <br>
-                <div class="col-11 gy-5 " style="height: auto;">
-                    <div class="feature-item container-fluid">
-                        <div class="row gx-1">
-                            <div class="col-1"><img class="rounded-circle"
-                                    src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                            <div class="col">
-                                <h5 class="">{{x.usuario.username}} </h5>
-                                <p>{{x.comentario}}</p>
-                                <small>{{x.data_criacao}}</small>
-                                {{x.notas}}
-                                 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3"></div>
-                </div>
-                
-                <br>
 
-            {%endfor%}
-            
-</div>
-<br>
+        <br>
+        <div class="col-11 gy-5 " style="height: auto;">
+            <div class="feature-item container-fluid">
+                <div class="row gx-1">
+                    <div class="col-1"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
+                            alt="..." /></div>
+                    <div class="col">
+                        <h5 class="">{{x.usuario.username}} </h5>
+                        <p>{{x.comentario}}</p>
+                        <small>{{x.data_criacao}}</small>
+                        {{x.nota}}
+
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3"></div>
+        </div>
+
+        <br>
+
+        {%endfor%}
+
+
+
+
+    </div>
+    <br>
 
 </div>
 </div>
@@ -200,6 +212,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <!-- Importando o js do bootstrap -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
 
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 {% endblock %}
