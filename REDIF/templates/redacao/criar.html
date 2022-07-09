@@ -1,73 +1,31 @@
-
 {% extends '-index.html' %}
 {% load static %}
 
-{% block title %}Redacoes{%endblock%}
+{% block title %}<title>Compartilhar redacão</title> {%endblock%}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/redacoes/style.css'%}">
+{%endblock%}
+
 
 {%load static%}
-{% block content %}
-<div class="row">
-    <div class="col- ml-5 mr-5">
-        <form action="." method="post">
-            {% csrf_token %}
-            {{ form.as_ul }}
-            <button type="submit">pesquisar</button>
-        </form>
-    </div>
-    <div class="col-md">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Suas redações: </h1>
-        
-                {% if Redacao %}
-                {% for r in Redacao %}
-                <div class="feature-item mb-5 mb-lg-0">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="feature-icon mb-4"><i class="icofont-file-text"></i>
-                            <a href="/redif/detalhar/{{ r.id }}"><h4 class="mb-3">"{{r.titulo}}"</h4></a></div>
-                        
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    {% if Logado and Redacao.fk_autor is Autor%}
-                                    <a href="/redif/deletar/{{ r.id }}">
-                                        <button type="button" class="btn mb-1 btn-danger">
-                                            <i class="icofont-bin"></i><span class="btn-icon-right"></span>
-                                        </button>
-                                    </a>
-                                    <a href="/redif/editar/{{ r.id }}">
-                                        <button type="button" class="btn mb-1 btn-primary">
-                                            <span class="btn-icon-right"> <i class="icofont-edit"></i></span>
-                                        </button>
-                                    </a>
-                                    {% endif %}
-                                    <a href="/redif/detalhar/{{ r.id }}">
-                                        <button type="button" class="btn mb-1 btn-primary">
-                                            <span class="btn-icon-right"> <i class="icofont-external-link"></i></i></span>
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                </div>
-                <br>
-                {% endfor %}
-        
-                {% else %}
-                <p>Não há redações, clique em compartilhar redações para adicioná-las</p>
-                {% endif %}
-                <div class="text-right mr-3">
-                    <a href="/redif/criar/">
-                        <button type="button" class="btn mb-1 btn-primary">
-                            Compartilhar redação <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
 
+{% block content %}
+<main>
+    <section  id="xctn-1">
+        <section id="xctn-2">
+            <h1>Compartilhar Redacao</h1>
+            <form action="." method="post" id="xctn-2">
+                {% csrf_token %}
+                {{ form.as_ul }}
+                <input type="submit" value="Compartilhar">
+            </form>
+            <aside>
+                <div id="more">
+                    <a href="/redif/listar/"><button class="btn">Cancelar</button></a>
+                </div>
+            </aside>
+        </section>
+    </section>
+</main>
 {% endblock %}
+
