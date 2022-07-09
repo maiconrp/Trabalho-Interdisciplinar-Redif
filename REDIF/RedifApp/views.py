@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponseRedirect, render
+from django.contrib.auth.models import User
 
 from RedifApp.forms import RedacaoForm, AvaliacaoForm, FiltroForm
 from RedifApp.models import Redacao, Usuario
@@ -10,8 +11,9 @@ def usuario(request):
     user = False
     if Usuario.is_authenticated:
         try: 
-            user = request.user.id
+            user = request.usuario.id
             user = Usuario.objects.get(pk=user)
+            print('oi')
         except: pass
     return user
 
@@ -27,7 +29,7 @@ def home(request):
 
 def listarRedacao(request):
     form = FiltroForm(request.POST)
-
+    print(usuario(request))
     Redacoes = filtros.filtrar(form)
 
     context = {
