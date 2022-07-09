@@ -7,14 +7,33 @@ from RedifApp.models import Redacao
 from accounts.models import Usuario
 from . import filtros
 
+titulacao = {
+        "1" : "Fundamental 2 ao 8°ano",
+        "2" : "Cursando 9° ano",
+        "3" : "Cursando Ensino Médio",
+        "4" : "Ensino Médio Completo",
+        "5" : "Ensino Médio Incompleto",
+        "6" : "Cursando Ensino Superior",        
+        "7" : "Ensino Superior Completo",
+    }
 
-def perfilUsuario(request, usuario):
-    perfil = Usuario.objects.filter(username = usuario)
+condicao = {
+        "P": "Professor",
+        "A": "Aluno"
+    }
+
+
+def perfilUsuario(request, user):
+
+    perfil = Usuario.objects.filter(username = user)
     Redacoes = Redacao.objects.filter(fk_autor= perfil[0])
+   
     context = {
         'Redacao': list(Redacoes),
         'Perfil' : perfil[0],
-        'Usuario' : usuario(request),
+        'Usuario' :  usuario(request),
+        'titulacao' : str(titulacao[perfil[0].titulacao]),
+        'condicao' : str(condicao[perfil[0].condicao])
     }
     
     return render(request,'redacao/perfil-usuario.html', context)
