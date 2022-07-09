@@ -26,7 +26,7 @@ class Redacao(models.Model):
     )
 
     area = MultiSelectField(
-        max_length=3, 
+        max_length=20, 
         max_choices=4,
         choices= AREA_CHOICES,
         blank=False, 
@@ -90,7 +90,7 @@ class Avaliacao(models.Model):
         max_length=300, 
     )
     nota = models.SmallIntegerField()
-    
+
     data_criacao = models.DateTimeField(
         default=datetime.date.today
     )
