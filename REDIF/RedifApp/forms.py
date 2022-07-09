@@ -1,5 +1,5 @@
 from django import forms
-from RedifApp.models import Redacao, Avaliacao
+from RedifApp.models import Redacao, Avaliacao, Filtro
 
 class RedacaoForm(forms.ModelForm):
     class Meta:
@@ -10,4 +10,10 @@ class AvaliacaoForm(forms.ModelForm):
     class Meta:
         model = Avaliacao
         fields = ['comentario', 'nota']
+        
+
+class FiltroForm(forms.ModelForm):
+    class Meta:
+        model = Filtro
+        fields = "__all__"
         
