@@ -13,52 +13,42 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarmain">
-
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="#footer">Quem Somos</a></li>
+					<li class="nav-item active">
+					  <a class="nav-link" href="/redif/home/">Tela inicial</a>
+					</li>
+
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Redações<i
-								class="icofont-thin-down"></i></a>
-						<ul class="dropdown-menu" aria-labelledby="dropdown02">
+						<a class="nav-link dropdown-toggle" href="{% static 'doctor.html' %}" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Redaçoes <i class="icofont-thin-down"></i></a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown03">
+							
 							<li><a class="dropdown-item" href="/redif/criar">Enviar</a></li>
 							<li><a class="dropdown-item" href="/redif">Buscar</a></li>
-						</ul>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#Pagina de Dicas">Blog</a></li>
-
-					<li class="nav-item"><a class="nav-link" href="https://docs.google.com/document/d/1zSjQhVjvV4H418FqEAB1fpZLyEhNMom0jfDqtOzfCrk/edit?usp=sharing">Documentação</a></li>
-
-					<li class="nav-item dropdown">
-						{%if Usuario.is_authenticated%}
-						<a class="nav-link dropdown-toggle" href="department.html" href="department.html" id="dropdown02"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user}}<i
-								class="icofont-thin-down"></i></a>
-							<ul class="dropdown-menu row" aria-labelledby="dropdown02">
 							
-								<li><a class="dropdown-item col" href="/accounts/logout">Sair</a></li>	
-							</ul>
-						{%endif%}
-						{%if not Usuario.is_authenticated%}
-							<a class="nav-link dropdown-toggle" href="department.html" href="department.html" id="dropdown02"
-								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contas<i
-									class="icofont-thin-down"></i></a>
-							<ul class="dropdown-menu" aria-labelledby="dropdown02">
-								<li><a class="dropdown-item" href="/accounts/login">Entre</a></li>
-								<li><a class="dropdown-item" href="/accounts/registrar">Cadastre-se</a></li>
-								
-							</ul>
+						</ul>
+					  </li>
 
-						{%endif%}
+					<li class="nav-item"><a class="nav-link" href="#footer">Quem Somos</a></li>
 
-						
-					</li>
-					
-					
-					
-
-
-				</ul>
+					 <li class="nav-item"><a class="nav-link" href="">Dicas de Estudos</a></li>
+					 <li class="nav-item"><a class="nav-link" href="https://docs.google.com/document/d/1zSjQhVjvV4H418FqEAB1fpZLyEhNMom0jfDqtOzfCrk/edit?usp=sharing">Documentação</a></li>
+					 {% if not Usuario%}
+					 <li class="nav-item"><a class="nav-link" href="/accounts/login/">Entrar</a></li>
+					 <li class="nav-item bg-primary "><a class="nav-link text-white" href="/accounts/registrar/">Cadastrar</a></li>
+							  
+					  {% endif %}
+					  {% if Usuario%}
+						<li class="nav-item dropdown">
+						  <a class="nav-link dropdown-toggle" href="{% static 'doctor.html' %}" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Conta <i class="icofont-thin-down"></i></a>
+						  <ul class="dropdown-menu" aria-labelledby="dropdown03">
+							  
+							  <li><a class="dropdown-item" href="/redif/perfil/{{ Usuario.username }}"><img src="{% static 'img/registration/user.svg' %}" width="20px" height="15px" alt=""> {{ Usuario.username}}</a></li>
+							  <li><a class="dropdown-item" href="/accounts/logout/">Sair</a></li>
+							  
+						  </ul>
+						</li>
+					  {% endif %}		
+				  </ul>
 			</div>
 		</div>
 	</nav>
