@@ -3,7 +3,8 @@ from django.shortcuts import HttpResponseRedirect, render
 from django.contrib.auth.models import User
 
 from RedifApp.forms import RedacaoForm, AvaliacaoForm, FiltroForm
-from RedifApp.models import Redacao, Usuario
+from RedifApp.models import Redacao
+from accounts.models import Usuario
 from . import filtros
 
 
@@ -11,9 +12,8 @@ def usuario(request):
     user = False
     if Usuario.is_authenticated:
         try: 
-            user = request.usuario.id
+            user = request.user.id
             user = Usuario.objects.get(pk=user)
-            print('oi')
         except: pass
     return user
 
@@ -29,7 +29,6 @@ def home(request):
 
 def listarRedacao(request):
     form = FiltroForm(request.POST)
-    print(usuario(request))
     Redacoes = filtros.filtrar(form)
 
     context = {
