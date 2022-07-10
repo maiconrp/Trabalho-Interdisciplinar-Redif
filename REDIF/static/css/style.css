@@ -12,6 +12,66 @@ html {
   overflow-x: hidden;
 }
 
+
+/* .img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+.img-fluid:hover {
+  
+  transform : scale(1.1, 1.1)
+} */
+/* Create a simple white box, and add the shadow for the initial state */
+.img-fluid {
+max-width: 90%;
+height: auto;
+box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+transition: all 0.3s ease-in-out;
+}
+
+/* Create the hidden pseudo-element */
+/* include the shadow for the end state */
+.img-fluid::after {
+opacity: 0;
+box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+transition: opacity 0.3s ease-in-out;
+}
+
+/* The fast way */
+
+.make-it-fast {
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Pre-render the bigger shadow, but hide it */
+
+.make-it-fast::after {
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+opacity: 0;
+transition: opacity 0.3s ease-in-out;
+}
+
+
+/* Transition to showing the bigger shadow on hover */
+
+.make-it-fast:hover::after {
+opacity: 1;
+}
+
+/* Scale up the box */
+.img-fluid:hover {
+transform: scale(1.09, 1.09);
+}
+
+/* Fade in the pseudo-element with the bigger shadow */
+.img-fluid:hover::after {
+opacity: 1;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+}
+
+
+
 body {
   line-height: 1.6;
   font-family: "Roboto", sans-serif;
