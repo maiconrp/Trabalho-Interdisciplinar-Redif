@@ -10,7 +10,7 @@
 {% block content %}
 <div class="container">
     <div class="row row-cols-3 row-cols-md-3 g-4">
-        <div class="col- ml-5">
+        <div class="col-">
             <form action="." method="post">
                 {% csrf_token %}
                 <div class="card">
@@ -45,9 +45,9 @@
                         <a href="/redif/detalhar/{{ r.id }}">
                         <div class="card-body">
                             <h5 class="card-title">{{r.titulo|slice:":25"}} ...</h5>
-                            <div class="card-subtitle">Preview: </div>
+                            <div class="card-subtitle">Tema: {{r.tema}}</div>
                             <p class="card-text" style="text-indent: 2em;">
-                                {{ r.conteudo|slice:":150" }} ...</p>
+                                <i> {{ r.conteudo|slice:":150" }} ...</p></i>
                         </div>
                         </a>
                         <div class="card-footer">

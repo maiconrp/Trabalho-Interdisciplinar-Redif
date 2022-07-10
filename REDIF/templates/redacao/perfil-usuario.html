@@ -56,16 +56,33 @@
             <div class="card " >
                 <a href="/redif/detalhar/{{ r.id }}">
                 <div class="card-body">
-                    <h5 class="card-title">{{r.titulo|slice:":25"}} ...</h5>
+                    <h5 class="card-title">{{r.titulo}}</h5>
                     <div class="card-subtitle">Preview: </div>
                     <p class="card-text" style="text-indent: 2em;">
                         {{ r.conteudo|slice:":150" }} ...</p>
                 </div>
                 </a>
+                {% if r.fk_autor.id == Usuario.id%}
+                <div class="row-fluid ml-4 mb-4">
+                    <a href="/redif/deletar/{{ r.id }}">
+                        <button type="button" class="btn mb-1 btn-danger">
+                            <i class="icofont-bin"></i><span class="btn-icon-right"></span>
+                            Excluir
+                        </button>
+                    </a>
+                    <a href="/redif/editar/{{ r.id }}">
+                        <button type="button" class="btn mb-1 btn-primary">
+                            <span class="btn-icon-right"> <i class="icofont-edit"></i></span>
+                            Editar
+                        </button>
+                    </a>
+                </div>
+                {% endif %}
                 <div class="card-footer">
                     <small class="text-muted">{{r.data_criacao}} | </small>
                     <a href="/redif/perfil/{{r.fk_autor.username}}/"><small class="text-muted">Autor:  {{r.fk_autor.username}}</small></a>
                 </div>
+                
             </div>
         </div>
                             
