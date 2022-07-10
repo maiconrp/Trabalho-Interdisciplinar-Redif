@@ -28,10 +28,20 @@
                     Contato : {{ Perfil.email}}
                 </div>
               </div>
+
+
             {% if Perfil.id == Usuario.id %}
-                <h4 class="mt-4">Suas redações: </h1>
+            <br>
+                <div class="text-right mr-3">
+                    <a href="/redif/criar/">
+                        <button type="button" class="btn mb-1 btn-primary">
+                            Compartilhar redação <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                        </button>
+                    </a>
+                </div>
+                <h4 class="card-title mt-4">Suas redações: </h1>
             {% else%}
-                <h4 class="mt-4">Redações de {{Perfil.username}}: </h1>
+                <h4 class="card-title mt-4">Redações de {{Perfil.username}}: </h1>
             {%endif%}
           
         </div>
@@ -42,28 +52,28 @@
         {% if Redacao %}
         {% for r in Redacao %}
 
-            <div class="col">
-                <div class="card" >
-                    <a href="/redif/detalhar/{{ r.id }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{r.titulo|slice:":25"}} ...</h5>
-                        <div class="card-subtitle">Por {{r.fk_autor.username}}</div>
-                        <p class="card-text">{{ r.conteudo|slice:":50" }} ...</p>
-                    </div>
-                    </a>
-                    <div class="card-footer">
-                        <small class="text-muted">{{r.data_criacao}}</small>
-                    </div>
+        <div class="col mb-4">
+            <div class="card " >
+                <a href="/redif/detalhar/{{ r.id }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{r.titulo|slice:":25"}} ...</h5>
+                    <div class="card-subtitle">Preview: </div>
+                    <p class="card-text" style="text-indent: 2em;">
+                        {{ r.conteudo|slice:":150" }} ...</p>
+                </div>
+                </a>
+                <div class="card-footer">
+                    <small class="text-muted">{{r.data_criacao}} | </small>
+                    <a href="/redif/perfil/{{r.fk_autor.username}}/"><small class="text-muted">Autor:  {{r.fk_autor.username}}</small></a>
                 </div>
             </div>
+        </div>
                             
         {% endfor %}
 
         {% else %}
             <p>Não há redações, clique em compartilhar redações para adicioná-las</p>
         {% endif %}
-    
-
     </div>
     {% endblock %}
     

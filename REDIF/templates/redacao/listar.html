@@ -37,26 +37,22 @@
         </div>
 
         <div class="col">
-            {% if Perfil.id == Usuario.id %}
-                    <h4 class="card-title">Suas redações: </h1>
-                {% else%}
-                    <h4 class="card-title">Redações de {{Perfil.username}}: </h1>
-            {%endif%}
-                
                 {% if Redacao %}
                 
                 {% for r in Redacao %}
-                <div class="col">
+                <div class="col mb-4">
                     <div class="card" >
                         <a href="/redif/detalhar/{{ r.id }}">
                         <div class="card-body">
                             <h5 class="card-title">{{r.titulo|slice:":25"}} ...</h5>
-                            <div class="card-subtitle">Por {{r.fk_autor.username}}</div>
-                            <p class="card-text">{{ r.conteudo|slice:":50" }} ...</p>
+                            <div class="card-subtitle">Preview: </div>
+                            <p class="card-text" style="text-indent: 2em;">
+                                {{ r.conteudo|slice:":150" }} ...</p>
                         </div>
                         </a>
                         <div class="card-footer">
-                            <small class="text-muted">{{r.data_criacao}}</small>
+                            <small class="text-muted">{{r.data_criacao}} | </small>
+                            <a href="/redif/perfil/{{r.fk_autor.username}}/"><small class="text-muted">Autor:  {{r.fk_autor.username}}</small></a>
                         </div>
                     </div>
                 </div>
