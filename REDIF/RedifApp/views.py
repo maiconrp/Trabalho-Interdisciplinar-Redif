@@ -32,8 +32,9 @@ def perfilUsuario(request, user):
         'Redacao': list(Redacoes),
         'Perfil' : perfil[0],
         'Usuario' :  usuario(request),
-        'titulacao' : str(titulacao[perfil[0].titulacao]),
-        'condicao' : str(condicao[perfil[0].condicao])
+        'Titulacao' : str(titulacao[perfil[0].titulacao]),
+        'Condicao' : str(condicao[perfil[0].condicao]),
+        'Username' : str(perfil[0].username).upper()
     }
     
     return render(request,'redacao/perfil-usuario.html', context)

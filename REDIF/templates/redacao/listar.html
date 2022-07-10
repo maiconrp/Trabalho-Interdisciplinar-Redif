@@ -8,86 +8,66 @@
 {%endblock%}
 
 {% block content %}
-<div class="row">
-    <div class="col- ml-5">
-        <form action="." method="post">
-            {% csrf_token %}
-            <div class="card">
-                <div class="card-header">
-                Filtros
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        {{ form.titulo.label_tag }}
-                        {{ form.titulo }}
+<div class="container">
+    <div class="row row-cols-3 row-cols-md-3 g-4">
+        <div class="col- ml-5">
+            <form action="." method="post">
+                {% csrf_token %}
+                <div class="card">
+                    <div class="card-header">
+                    Filtros
                     </div>
-                    <div class="form-group">
-                        {{ form.tema.label_tag }}
-                        {{ form.tema }}
-                    </div>
-                    <div class="form-check">
-                        {{ form.area.label_tag }}
-                        {{ form.area }}
-                    </div>
-                </div>
-                <button  class="btn btn-primary" type="submit">Filtrar</button>
-            </div>
-        </form>
-    </div>
-    <div class="col-sm-8">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Suas redações: </h1>
-        
-                {% if Redacao %}
-                {% for r in Redacao %}
-                <div class="feature-item mb-5 mb-lg-0">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="feature-icon mb-4"><i class="icofont-file-text"></i>
-                            <a href="/redif/detalhar/{{ r.id }}"><h4 class="mb-3">"{{r.titulo}}"</h4></a></div>
-                        
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    {% if r.fk_autor.id == Usuario.id%}
-                                    <a href="/redif/deletar/{{ r.id }}">
-                                        <button type="button" class="btn mb-1 btn-danger">
-                                            <i class="icofont-bin"></i><span class="btn-icon-right"></span>
-                                        </button>
-                                    </a>
-                                    <a href="/redif/editar/{{ r.id }}">
-                                        <button type="button" class="btn mb-1 btn-primary">
-                                            <span class="btn-icon-right"> <i class="icofont-edit"></i></span>
-                                        </button>
-                                    </a>
-                                    {% endif %}
-                                    <a href="/redif/detalhar/{{ r.id }}">
-                                        <button type="button" class="btn mb-1 btn-primary">
-                                            <span class="btn-icon-right"> <i class="icofont-external-link"></i></i></span>
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            {{ form.titulo.label_tag }}
+                            {{ form.titulo }}
                         </div>
+                        <div class="form-group">
+                            {{ form.tema.label_tag }}
+                            {{ form.tema }}
+                        </div>
+                        <div class="form-check">
+                            {{ form.area.label_tag }}
+                            {{ form.area }}
+                        </div>
+                    </div>
+                    <button  class="btn btn-primary" type="submit">Filtrar</button>
                 </div>
+            </form>
+        </div>
+
+        <div class="col">
+            {% if Perfil.id == Usuario.id %}
+                    <h4 class="card-title">Suas redações: </h1>
+                {% else%}
+                    <h4 class="card-title">Redações de {{Perfil.username}}: </h1>
+            {%endif%}
+                
+                {% if Redacao %}
+                
+                {% for r in Redacao %}
+                <div class="col">
+                    <div class="card" >
+                        <a href="/redif/detalhar/{{ r.id }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{r.titulo|slice:":25"}} ...</h5>
+                            <div class="card-subtitle">Por {{r.fk_autor.username}}</div>
+                            <p class="card-text">{{ r.conteudo|slice:":50" }} ...</p>
+                        </div>
+                        </a>
+                        <div class="card-footer">
+                            <small class="text-muted">{{r.data_criacao}}</small>
+                        </div>
+                    </div>
                 </div>
-                <br>
+                                    
                 {% endfor %}
-        
+
                 {% else %}
-                <p>Não há redações, clique em compartilhar redações para adicioná-las</p>
+                    <p>Não há redações, clique em compartilhar redações para adicioná-las</p>
+                    
                 {% endif %}
-                <div class="text-right mr-3">
-                    <a href="/redif/criar/">
-                        <button type="button" class="btn mb-1 btn-primary">
-                            Compartilhar redação <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
-                        </button>
-                    </a>
-                </div>
-            </div>
         </div>
     </div>
 </div>
-</div>
-
 {% endblock %}
