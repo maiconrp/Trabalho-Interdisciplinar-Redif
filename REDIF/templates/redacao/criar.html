@@ -1,10 +1,11 @@
-
 {% extends '-index.html' %}
+{% load static %}
+
+{% block title %}Redacoes{%endblock%}
 
 {%load bootstrap%}
 {%load static%}
 {% block content %}
-
 <div class="row justify-content-center">
     <div class="col-9">
         <div class="feature-item mb-5 mb-lg-0">
@@ -14,38 +15,14 @@
 
                     {{ form|bootstrap }}
                     <input type="submit" class="btn btn-primary" value="Salvar">
-                    <a href="/redif">
+                    <a href="/redif/listar/">
                         <button type="button" class="btn mb-1">
                             Cancelar <span class="btn-icon-right"> <i class="fa fa-close"></i> </span>
                         </button>
                     </a>
-                </div></div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-<!-- <div class="row">
-    <div class="col-md-6">
-        <label for="inputText" class="form-label">Titulo</label>
-        <input type="text" class="form-control" id="inputTitulo">
-    </div>
-    <div class="col-md-3">
-        <label for="inputTema" class="form-label">Tema</label>
-        <input type="text" class="form-control" id="inputTema">
-    </div>
-    <div class="col-md-3">
-        <label for="inputState" class="form-label">State</label>
-        <select class="form-select" aria-label="Default select example" id="inputState">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-    </div>
-</div> -->
-
-{% endblock %}
-
-
+{%endblock%}

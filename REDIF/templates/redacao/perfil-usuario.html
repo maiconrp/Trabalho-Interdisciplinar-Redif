@@ -1,0 +1,96 @@
+
+{% extends '-index.html' %}
+{% load static %}
+
+{% block head %}
+<title> Perfil {{ Perfil.username}}</title> 
+{%endblock%}
+
+{%load static%}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Perfil {{ Username}}
+                </div>
+                
+                <div class="card-body ">
+                    <h5 class="card-title">Informações</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Titulacao : {{ Titulacao}}</li>
+                        <li class="list-group-item">Condicao : {{ Condicao}}</li>
+                    </ul>
+                </div>
+                <div class="card-footer text-muted">
+                    Contato : {{ Perfil.email}}
+                </div>
+              </div>
+
+
+            {% if Perfil.id == Usuario.id %}
+            <br>
+                <div class="text-right mr-3">
+                    <a href="/redif/criar/">
+                        <button type="button" class="btn mb-1 btn-primary">
+                            Compartilhar redação <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                        </button>
+                    </a>
+                </div>
+                <h4 class="card-title mt-4">Suas redações: </h1>
+            {% else%}
+                <h4 class="card-title mt-4">Redações de {{Perfil.username}}: </h1>
+            {%endif%}
+          
+        </div>
+    </div>
+    
+    <div class="row row-cols-2 row-cols-md-2 g-4">
+       
+        {% if Redacao %}
+        {% for r in Redacao %}
+
+        <div class="col mb-4">
+            <div class="card " >
+                <a href="/redif/detalhar/{{ r.id }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{r.titulo}}</h5>
+                    <div class="card-subtitle">Preview: </div>
+                    <p class="card-text" style="text-indent: 2em;">
+                        {{ r.conteudo|slice:":150" }} ...</p>
+                </div>
+                </a>
+                {% if r.fk_autor.id == Usuario.id%}
+                <div class="row-fluid ml-4 mb-4">
+                    <a href="/redif/deletar/{{ r.id }}">
+                        <button type="button" class="btn mb-1 btn-danger">
+                            <i class="icofont-bin"></i><span class="btn-icon-right"></span>
+                            Excluir
+                        </button>
+                    </a>
+                    <a href="/redif/editar/{{ r.id }}">
+                        <button type="button" class="btn mb-1 btn-primary">
+                            <span class="btn-icon-right"> <i class="icofont-edit"></i></span>
+                            Editar
+                        </button>
+                    </a>
+                </div>
+                {% endif %}
+                <div class="card-footer">
+                    <small class="text-muted">{{r.data_criacao}} | </small>
+                    <a href="/redif/perfil/{{r.fk_autor.username}}/"><small class="text-muted">Autor:  {{r.fk_autor.username}}</small></a>
+                </div>
+                
+            </div>
+        </div>
+                            
+        {% endfor %}
+
+        {% else %}
+            <p>Não há redações, clique em compartilhar redações para adicioná-las</p>
+        {% endif %}
+    </div>
+    {% endblock %}
+    

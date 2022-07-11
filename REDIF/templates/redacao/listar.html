@@ -2,65 +2,142 @@
 {% extends '-index.html' %}
 {% load static %}
 
-{% block title %}Redacoes{%endblock%}
+{% block head %}
+<title>Redacoes</title>
+<link rel="stylesheet" href="{% static 'css/filtro.css' %}">
+{%endblock%}
 
-{%load static%}
 {% block content %}
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Suas redações: </h1>
-        
-                {% if Redacao %}
-                {% for r in Redacao %}
-                <div class="feature-item mb-5 mb-lg-0">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="feature-icon mb-4"><i class="icofont-file-text"></i>
-                            <a href="/redif/detalhar/{{ r.id }}"><h4 class="mb-3">"{{r.titulo}}"</h4></a></div>
-                        
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    {% if Logado and Redacao.fk_autor is Autor%}
-                                    <a href="/redif/deletar/{{ r.id }}">
-                                        <button type="button" class="btn mb-1 btn-danger">
-                                            <i class="icofont-bin"></i><span class="btn-icon-right"></span>
-                                        </button>
-                                    </a>
-                                    <a href="/redif/editar/{{ r.id }}">
-                                        <button type="button" class="btn mb-1 btn-primary">
-                                            <span class="btn-icon-right"> <i class="icofont-edit"></i></span>
-                                        </button>
-                                    </a>
-                                    {% endif %}
-                                    <a href="/redif/detalhar/{{ r.id }}">
-                                        <button type="button" class="btn mb-1 btn-primary">
-                                            <span class="btn-icon-right"> <i class="icofont-external-link"></i></i></span>
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                </div>
-                <br>
-                {% endfor %}
-        
-                {% else %}
-                <p>Não há redações, clique em compartilhar redações para adicioná-las</p>
-                {% endif %}
-                <div class="text-right mr-3">
-                    <a href="/redif/criar/">
-                        <button type="button" class="btn mb-1 btn-primary">
-                            Compartilhar redação <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
 
+<section class="page-title bg-1">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="block text-center">
+            <span class="text-white">Redif</span>
+            <h1 class="text-capitalize mb-5 text-lg">redações</h1>
+  
+            <ul class="list-inline breadcumb-nav">
+              <li class="list-inline-item"><a href="/redif/home" class="text-white">Home</a></li>
+              <li class="list-inline-item"><span class="text-white">/</span></li>
+              <li class="list-inline-item"><a href="#" class="text-white-50">Redações</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+  <br>
+  <div class="container col-10">
+    <div class="row justify-content-end">
+      
+      <button class="btn btn-primary rounded align-self-end" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <i class="icofont-filter"></i>
+      </button>
+      <div>
+      <button class="btn btn-primary rounded align-self-end" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <i class="icofont-arrow-down"></i>
+      </button>
+      <button class="btn btn-primary rounded align-self-end" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <i class="icofont-arrow-up"></i>
+      </button>
+    </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col collapse" id="collapseExample">
+        <div class="card card-body feature-item">
+          <form action="." method="post">
+            {% csrf_token %}
+            <div class="card">
+              <div class="card-header">
+                Filtros
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  {{ form.titulo.label_tag }}
+                  {{ form.titulo }}
+                </div>
+                <div class="form-group ">
+                  {{ form.tema.label_tag }}
+                  {{ form.tema }}
+                </div>
+                <div class="form-check">
+                  {{ form.area.label_tag }}
+                  {{ form.area }}
+                </div>
+              </div>
+              <button class="btn btn-primary" type="submit">Filtrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      {% if Redacao %}
+      <div class="col">
+          <div class="row"> 
+                  {% for r in Redacao %}
+                  <!-- Previa Redacao -->      
+                    <div class="col teste comment-area-box m-2">
+                      <div class="comment-info">
+                        <h5 class="mb-1">{{r.titulo|slice:":25"}}</h5>
+                        <div class="card-subtitle">{{r.tema}}</div>
+                      </div>
+                      <br>
+                      <a href="/redif/detalhar/{{ r.id }}">
+                        <div class="text">
+                          <p class="text" style="text-align: justify;">
+                            {{ r.conteudo|slice:":200" }}...
+                          </p>
+                        </div>
+                      </a>
+                      <div class="comment-info">
+                        <small class="text-muted">
+                          {{r.data_criacao}} | 
+                        </small>
+                        <a href="/redif/perfil/{{r.fk_autor.username}}/">
+                          <small class="text-muted">
+                            Autor: {{r.fk_autor.username}}
+                          </small>
+                        </a>
+                      </div>
+                    
+                  </div>
+                  {% endfor %}
+           </div>    
+                 
+       </div>
+                  {% else %}
+                      <p>Não há redações, clique em compartilhar redações para adicioná-las</p>
+                  {% endif %}
+        
+      </div>
+    </div>
+  
+
+<style>
+  .teste{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem;
+      position: relative;
+      height: 20.60rem;
+      background: #FFFFFF;
+      box-shadow: 0px 0px 26.0323px rgba(0, 42, 106, 0.1);
+      border-radius: 13.0161px;
+      animation: 1s;
+      transition: all 0.3s ease-in-out;
+    }
+
+      .teste:hover{
+          transform : scale(1.05, 1.05)
+      }
+</style>
 {% endblock %}

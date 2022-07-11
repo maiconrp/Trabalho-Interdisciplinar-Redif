@@ -8,6 +8,7 @@
         <div class="col-9">
             <h3 class="text-white justify-content-center">
                 {{Redacao.titulo}}
+                
             </h3>
         </div>
 
@@ -49,7 +50,7 @@
                         </div>
                         <div class="ms-3">
                             <h4 class="fw-bold">
-                                {{Redacao.fk_autor.username}}
+                                <a href="/redif/perfil/{{Redacao.fk_autor.username}}/">{{Redacao.fk_autor.username}}</a>
                             </h4>
                             <small class="Data de postagem">Postado em {{Redacao.data_criacao}}</small>
                         </div>
@@ -75,11 +76,11 @@
                     </article>
 
                     <div class="row justify-content-center align-items-center container-fluid">
-                        <div class="col-8">Iae{{Redacao.Area}}|{{Redacao.tema}}</div>
+                        <div class="col-8">Tema: {{Redacao.Area}}|{{Redacao.tema}}</div>
                         <div class="row justify-content-center align-items-center">
-                            <div class="col">10{{Redacao.numero_de_curtidas}}<a href=""><i
+                            <div class="col">{{Redacao.numero_de_curtidas}}<a href=""><i
                                         class="icofont-heart ml-3"></i></a></div>
-                            <div class="col">18{{Redacao.numero_de_curtidas}}<a href="" onclick="copiarTexto()"
+                            <div class="col">{{Redacao.numero_de_curtidas}}<a href="" onclick="copiarTexto()"
                                     data-toggle="modal" data-target="#CompartilharRedacaoIcon"><i
                                         class="icofont-share ml-3"></i></a></div>
                             <div class="col">{{Redacao.Usuario_avaliacao.all.count}} <a href="#comentario"><i
@@ -178,7 +179,8 @@
                     <div class="col-1"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
                             alt="..." /></div>
                     <div class="col">
-                        <h5 class="">{{x.usuario.username}} </h5>
+                        
+                        <h5 class=""><a href="/redif/perfil/{{x.usuario.username}}/">{{x.usuario.username}}</a> </h5>
                         <p>{{x.comentario}}</p>
                         <small>{{x.data_criacao}}</small>
                         {{x.nota}}

@@ -1,26 +1,52 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponseRedirect, render
+from django.contrib.auth.models import User
 
-from RedifApp.forms import RedacaoForm, AvaliacaoForm
+from RedifApp.forms import RedacaoForm, AvaliacaoForm, FiltroForm
+from RedifApp.models import Redacao
+from accounts.models import Usuario
+from . import filtros
 
-#importo a classe usuário
-from RedifApp.models import Redacao, Usuario
+titulacao = {
+        "1" : "Fundamental 2 ao 8°ano",
+        "2" : "Cursando 9° ano",
+        "3" : "Cursando Ensino Médio",
+        "4" : "Ensino Médio Completo",
+        "5" : "Ensino Médio Incompleto",
+        "6" : "Cursando Ensino Superior",        
+        "7" : "Ensino Superior Completo",
+    }
+
+condicao = {
+        "P": "Professor",
+        "A": "Aluno"
+    }
 
 
-#ainda falta mesclar com algumas alterações da views da master
 
-#O que antes era classe "User", passa a ser "Usuario"
+def perfilUsuario(request, user):
 
-#melhor coisa essa funçãokkkkkkkk salvou
+    perfil = Usuario.objects.filter(username = user)
+    Redacoes = Redacao.objects.filter(fk_autor= perfil[0])
+   
+    context = {
+        'Redacao': list(Redacoes),
+        'Perfil' : perfil[0],
+        'Usuario' :  usuario(request),
+        'Titulacao' : str(titulacao[perfil[0].titulacao]),
+        'Condicao' : str(condicao[perfil[0].condicao]),
+        'Username' : str(perfil[0].username).upper()
+    }
+    
+    return render(request,'redacao/perfil-usuario.html', context)
+
 def usuario(request):
     user = False
     if Usuario.is_authenticated:
         try: 
             user = request.user.id
             user = Usuario.objects.get(pk=user)
-        except: 
-            pass
-
+        except: pass
     return user
 
 #-------------------------------------------------
@@ -33,17 +59,33 @@ def home(request):
 
 #-------------------------------------------------
 
-def listarRedacao(request):
-    Redacoes = Redacao.objects.all()
-
-    context = {
-        "Redacao" : Redacoes,
-        'Usuario' : usuario(request),
-        }
-
-    return render(request,"redacao/listar.html", context)
+def PagDicas(request, iDica):
+    Redacoes = Redacao.objects.all() 
+    Dicas = {
+        'PagDicasGeral' : 'PagDicasGeral', #Pag-Dicas/PagDicasGeral
+        'Introducao'    : 'introducao',#Pag-Dicas/Introducao
+        'Passo-a-passo' : 'passo-a-passo',#Pag-Dicas/Passo-a-passo
+        'ComoF'         : 'ComoF',#Pag-Dicas/ComoF
+        'conclusao'     : 'conclusao',#Pag-Dicas/conclusao
+        'desenvolvimento': 'desenvolvimento'#Pag-Dicas/desenvolvimento
+    }
+    if iDica in Dicas.keys():
+        return render(request, 'PaginaDeDicas/' + Dicas[iDica] + '.html', {'Redacoes' : Redacoes })
+    else: 
+        return render(request, 'PaginaDeDicas/PagDicasGeral.html', {'Redacoes' : Redacoes })
 
 #-------------------------------------------------
+
+def listarRedacao(request):
+    form = FiltroForm(request.POST)
+    Redacoes = filtros.filtrar(form)
+
+    context = {
+        "Redacao": Redacoes,
+        'Usuario' : usuario(request),
+        'form' : form,
+    }
+    return render(request,"redacao/listar.html", context)
 
 @login_required
 def criarRedacao(request):
@@ -59,16 +101,16 @@ def criarRedacao(request):
             context = {
                 'form'    : form,
                 'Usuario' : usuario(request)
-                }
-
+            }
             return HttpResponseRedirect("/redif")
-    else:
-        form = RedacaoForm()
+    
+    else:form = RedacaoForm()
 
     context = {
         'form'    : form,
         'Usuario' : usuario(request),
     }
+    
     return render(request, 'redacao/criar.html', context)
     
 #-------------------------------------------------
