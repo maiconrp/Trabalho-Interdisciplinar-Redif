@@ -10,12 +10,13 @@ from multiselectfield import MultiSelectField
 class Redacao(models.Model):
     #area como um campo de multipla escolha
     AREA_CHOICES = (
-        ("CET","Ciencias Exatas e da Terra"),
-        ("CB","Ciências Biológicas"),
-        ("CSA", "Ciências Sociais Aplicadas"),
-        ("E","Engenharias"),
-        ("LLA","Linguística, Letras e Artes"),        
-        ("CH", "Ciências Humanas")
+        ("C",   "Ciencias"),
+        ("B",   "Biologia"),
+        ("S",   "Sociedade"),
+        ("E",   "Engenharias"),
+        ("L",   "Linguística"),        
+        ("P",   "Política"),
+        ("P",   "História"),
     )
     titulo = models.CharField(
         max_length = 45, 
@@ -59,13 +60,13 @@ class Redacao(models.Model):
     compartilhamentos = models.SmallIntegerField(default=0)
     # mediaNotas =  models.SmallIntegerField(default=0)
 
-
     #Relaciono redação com a classe Usuario - 1 - N = " 1 Usuario escreve N redações"
     fk_autor = models.ForeignKey(
         Usuario,
         on_delete=models.CASCADE,
         related_name='Redacao'
     )
+    
     #Relaciono redação com a classe Usuario - N - N = "N  Usuarios escrevem N redações" 
     avaliacoes = models.ManyToManyField(
         Usuario, 
@@ -109,13 +110,18 @@ class Avaliacao(models.Model):
 class Filtro(models.Model):
     #area como um campo de multipla escolha
     AREA_CHOICES = (
-        ("CET","Ciencias Exatas e da Terra"),
-        ("CB","Ciências Biológicas"),
-        ("CSA", "Ciências Sociais Aplicadas"),
-        ("E","Engenharias"),
-        ("LLA","Linguística, Letras e Artes"),        
-        ("CH", "Ciências Humanas")
+        ("C",   "Ciencias"),
+        ("B",   "Biologia"),
+        ("S",   "Sociedade"),
+        ("E",   "Engenharias"),
+        ("L",   "Linguística"),        
+        ("P",   "Política"),
+        ("P",   "História"),
     )
+    # AVALIADAS = (
+    #     (Redacao.Usuario_avaliacao.all().count(), "Sim"),
+    #     (0, "não")
+    # )
     titulo = models.CharField(
         max_length = 45, 
         blank = True,
